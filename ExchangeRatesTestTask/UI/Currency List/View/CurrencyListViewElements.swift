@@ -13,15 +13,15 @@ class CurrencyListViewElements {
     static func createDateLabel() -> UILabel {
         let dateLabel = UILabel()
         dateLabel.textColor = .black
-//        dateLabel.font = Fonts.title
+        dateLabel.font = Fonts.titleBold
         dateLabel.textAlignment = .left
         return dateLabel
     }
 
     static func createCurrencyLabel() -> UILabel {
         let currencyLabel = UILabel()
-//        currencyLabel.textColor = Colors.graySubtitle
-//        currencyLabel.font = Fonts.subtitle
+        currencyLabel.textColor = Colors.grayTitle
+        currencyLabel.font = Fonts.title
         currencyLabel.textAlignment = .left
         currencyLabel.numberOfLines = 0
         return currencyLabel
@@ -29,8 +29,8 @@ class CurrencyListViewElements {
     
     static func createCodeLabel() -> UILabel {
         let codeLabel = UILabel()
-//        codeLabel.textColor = Colors.graySubtitle
-//        codeLabel.font = Fonts.subtitle
+        codeLabel.textColor = Colors.grayTitle
+        codeLabel.font = Fonts.title
         codeLabel.textAlignment = .left
         codeLabel.numberOfLines = 0
         return codeLabel
@@ -38,8 +38,8 @@ class CurrencyListViewElements {
     
     static func createMidValueLabel() -> UILabel {
         let midValueLabel = UILabel()
-//        midValueLabel.textColor = Colors.graySubtitle
-//        midValueLabel.font = Fonts.subtitle
+        midValueLabel.textColor = Colors.grayTitle
+        midValueLabel.font = Fonts.title
         midValueLabel.textAlignment = .left
         midValueLabel.numberOfLines = 0
         return midValueLabel
@@ -59,5 +59,4 @@ class CurrencyListViewElements {
         control.tintColor = .blue
         return control
     }
-    
 }

@@ -32,6 +32,11 @@
 		AF4A3232244A1D6A00505803 /* CurrencyDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A3231244A1D6A00505803 /* CurrencyDetailsVC.swift */; };
 		AF4A3234244A1D8000505803 /* CurrencyDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A3233244A1D8000505803 /* CurrencyDetailsPresenter.swift */; };
 		AF4A3237244A207500505803 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A3236244A207500505803 /* Cache.swift */; };
+		AF4A323D244A3D0700505803 /* CurrencyDetailsViewElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A323C244A3D0700505803 /* CurrencyDetailsViewElements.swift */; };
+		AF4A323F244A404900505803 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A323E244A404900505803 /* Colors.swift */; };
+		AF4A3241244A40E600505803 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A3240244A40E600505803 /* Fonts.swift */; };
+		AF4A3245244A42D200505803 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF4A3243244A41CE00505803 /* Raleway-Regular.ttf */; };
+		AF4A3246244A42D200505803 /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF4A3244244A41CE00505803 /* Raleway-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +67,11 @@
 		AF4A3231244A1D6A00505803 /* CurrencyDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsVC.swift; sourceTree = "<group>"; };
 		AF4A3233244A1D8000505803 /* CurrencyDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsPresenter.swift; sourceTree = "<group>"; };
 		AF4A3236244A207500505803 /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		AF4A323C244A3D0700505803 /* CurrencyDetailsViewElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsViewElements.swift; sourceTree = "<group>"; };
+		AF4A323E244A404900505803 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		AF4A3240244A40E600505803 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		AF4A3243244A41CE00505803 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
+		AF4A3244244A41CE00505803 /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +107,7 @@
 				AF4A31FE2448E9F200505803 /* Data */,
 				AF4A32032448EA3600505803 /* UI */,
 				AF4A32132449A3B200505803 /* Utils */,
+				AF4A3242244A418600505803 /* Resources */,
 				AF4A31EA24487E0B00505803 /* AppDelegate.swift */,
 				AF4A31EE24487E0B00505803 /* ViewController.swift */,
 				AF4A31F024487E0B00505803 /* Main.storyboard */,
@@ -162,6 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				AF4A322D244A06E400505803 /* CustomErrorAlert.swift */,
+				AF4A323E244A404900505803 /* Colors.swift */,
+				AF4A3240244A40E600505803 /* Fonts.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -224,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				AF4A3231244A1D6A00505803 /* CurrencyDetailsVC.swift */,
+				AF4A323C244A3D0700505803 /* CurrencyDetailsViewElements.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -250,6 +264,15 @@
 				AF4A3236244A207500505803 /* Cache.swift */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		AF4A3242244A418600505803 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AF4A3243244A41CE00505803 /* Raleway-Regular.ttf */,
+				AF4A3244244A41CE00505803 /* Raleway-SemiBold.ttf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +333,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF4A3245244A42D200505803 /* Raleway-Regular.ttf in Resources */,
+				AF4A3246244A42D200505803 /* Raleway-SemiBold.ttf in Resources */,
 				AF4A31F724487E0D00505803 /* LaunchScreen.storyboard in Resources */,
 				AF4A31F424487E0D00505803 /* Assets.xcassets in Resources */,
 				AF4A31F224487E0B00505803 /* Main.storyboard in Resources */,
@@ -324,9 +349,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF4A3232244A1D6A00505803 /* CurrencyDetailsVC.swift in Sources */,
+				AF4A323F244A404900505803 /* Colors.swift in Sources */,
 				AF4A321B2449E66500505803 /* Currency.swift in Sources */,
 				AF4A3230244A1D5D00505803 /* CurrencyDetailsModel.swift in Sources */,
 				AF4A32192449A5A700505803 /* CurrencyListViewElements.swift in Sources */,
+				AF4A323D244A3D0700505803 /* CurrencyDetailsViewElements.swift in Sources */,
+				AF4A3241244A40E600505803 /* Fonts.swift in Sources */,
 				AF4A3237244A207500505803 /* Cache.swift in Sources */,
 				AF4A32252449EA0800505803 /* ErrorInfo.swift in Sources */,
 				AF4A321F2449E6AD00505803 /* ResponseValidator.swift in Sources */,
@@ -489,6 +517,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				INFOPLIST_FILE = ExchangeRatesTestTask/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -507,6 +536,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				INFOPLIST_FILE = ExchangeRatesTestTask/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -579,6 +609,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "";
 				INFOPLIST_FILE = ExchangeRatesTestTask/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

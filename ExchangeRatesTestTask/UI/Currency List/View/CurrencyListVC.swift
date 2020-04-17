@@ -17,9 +17,19 @@ class CurrencyListVC: UIViewController {
     let tableView = UITableView(frame: .zero, style: .plain)
     let spinner = UIActivityIndicatorView(style: .whiteLarge)
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        customizeNavigationBar(animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Currency rates"
         currencyListPresenter.viewDelegate = self
         setupTableView()
         
@@ -58,6 +68,13 @@ class CurrencyListVC: UIViewController {
         view.addSubview(stackView)
 
         stackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leftAnchor, bottom: view.bottomAnchor, trailing: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
+    }
+    
+    func customizeNavigationBar(_ animated: Bool) {
+        title = "Currency rates".capitalized
+//        navigationController?.navigationBar.barTintColor = Colors.green
+//        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Colors.white, .font: Fonts.navigationTitle!]
+//        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }
 

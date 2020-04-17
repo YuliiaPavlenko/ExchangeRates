@@ -10,4 +10,17 @@ import UIKit
 
 class CurrencyDetailsVC: UIViewController {
 
+    var currencyDetailsPresenter = CurrencyDetailsPresenter()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        customizeNavigationBar(true)
+//        currencyDetailsPresenter.viewIsPrepared()
+    }
+    
+    func customizeNavigationBar(_ animated: Bool) {
+        title = currencyDetailsPresenter.selectedCurrencyRate?.currency?.capitalized
+//        navigationController?.navigationBar.barTintColor = Colors.green
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Colors.grayTitle, .font: Fonts.bigTitleBold!]
+    }
 }
