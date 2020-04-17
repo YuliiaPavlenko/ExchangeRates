@@ -16,6 +16,8 @@
 		AF4A32102448EDD000505803 /* CurrencyListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A320F2448EDD000505803 /* CurrencyListPresenter.swift */; };
 		AF4A32122448EDDF00505803 /* CurrencyListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A32112448EDDF00505803 /* CurrencyListVC.swift */; };
 		AF4A32152449A3CF00505803 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A32142449A3CF00505803 /* UIView+Utils.swift */; };
+		AF4A32172449A58400505803 /* CurrencyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A32162449A58400505803 /* CurrencyListCell.swift */; };
+		AF4A32192449A5A700505803 /* CurrencyListViewElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A32182449A5A700505803 /* CurrencyListViewElements.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		AF4A320F2448EDD000505803 /* CurrencyListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListPresenter.swift; sourceTree = "<group>"; };
 		AF4A32112448EDDF00505803 /* CurrencyListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListVC.swift; sourceTree = "<group>"; };
 		AF4A32142449A3CF00505803 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
+		AF4A32162449A58400505803 /* CurrencyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListCell.swift; sourceTree = "<group>"; };
+		AF4A32182449A5A700505803 /* CurrencyListViewElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewElements.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				AF4A32112448EDDF00505803 /* CurrencyListVC.swift */,
+				AF4A32162449A58400505803 /* CurrencyListCell.swift */,
+				AF4A32182449A5A700505803 /* CurrencyListViewElements.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -267,7 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF4A32192449A5A700505803 /* CurrencyListViewElements.swift in Sources */,
 				AF4A320E2448EDB800505803 /* CurrencyListModel.swift in Sources */,
+				AF4A32172449A58400505803 /* CurrencyListCell.swift in Sources */,
 				AF4A32102448EDD000505803 /* CurrencyListPresenter.swift in Sources */,
 				AF4A32122448EDDF00505803 /* CurrencyListVC.swift in Sources */,
 				AF4A31EF24487E0B00505803 /* ViewController.swift in Sources */,
