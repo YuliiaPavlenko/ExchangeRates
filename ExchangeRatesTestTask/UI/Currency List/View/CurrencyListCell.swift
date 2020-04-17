@@ -20,19 +20,19 @@ class CurrencyListCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         addSubview(dateLabel)
-        
-        dateLabel.anchor(top: topAnchor, leading: leftAnchor, bottom: nil, trailing: nil, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 20, enableInsets: false)
-        
-        let currencyDataStackView = CurrencyListViewElements.createHorizontalStackView(arrangedSubviews: [currencyLabel, codeLabel, midValueLabel])
+        addSubview(currencyLabel)
+        dateLabel.anchor(top: topAnchor, leading: leftAnchor, bottom: nil, trailing: nil, paddingTop: 12, paddingLeft: 20, paddingBottom: 0, paddingRight: 12, width: 0, height: 20, enableInsets: false)
+        currencyLabel.anchor(top: dateLabel.bottomAnchor, leading: leftAnchor, bottom: bottomAnchor, trailing: nil, paddingTop: 6, paddingLeft: 20, paddingBottom: 12, paddingRight: 0, width: frame.size.width * 0.6, height: 20, enableInsets: false)
+        let currencyDataStackView = CurrencyListViewElements.createHorizontalStackView(arrangedSubviews: [codeLabel, midValueLabel])
         addSubview(currencyDataStackView)
-        currencyDataStackView.anchor(top: dateLabel.bottomAnchor, leading: leftAnchor, bottom: bottomAnchor, trailing: rightAnchor, paddingTop: 0, paddingLeft: 12, paddingBottom: 0, paddingRight: 10, width: 0, height: 0, enableInsets: false)
+        currencyDataStackView.anchor(top: dateLabel.bottomAnchor, leading: currencyLabel.rightAnchor, bottom: bottomAnchor, trailing: rightAnchor, paddingTop: 6, paddingLeft: 12, paddingBottom: 12, paddingRight: 12, width: 0, height: 0, enableInsets: false)
 
     }
     
     func configureWithCurrency(_ currency: CurrencyListModel) {
         dateLabel.text = currency.date ?? "Empty date"
         currencyLabel.text = currency.currency ?? "Empty currency"
-        codeLabel.text = currency.code ?? "+00 000 000 000"
+        codeLabel.text = currency.code ?? "Empty code"
         midValueLabel.text = currency.midValue ?? "No mid value"
     }
 

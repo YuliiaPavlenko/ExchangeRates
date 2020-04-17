@@ -9,6 +9,6 @@
 import Foundation
 
 struct Rate: Codable {
-    let currency, code: String
-    let mid: Double
+    let currency, code: String?
+    let mid, bid, ask: Double?
 }

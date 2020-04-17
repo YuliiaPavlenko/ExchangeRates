@@ -9,6 +9,6 @@
 import Foundation
 
 struct Currency: Codable {
-    let table, no, effectiveDate: String
+    let table, no, effectiveDate: String?
     let rates: [Rate]
 }

@@ -15,26 +15,21 @@ class CurrencyListVC: UIViewController {
     
     lazy var segmentedControl = CurrencyListViewElements.createSegmentedControl(withItems: ["Table A", "Table B", "Table C"])
     let tableView = UITableView(frame: .zero, style: .plain)
+    let spinner = UIActivityIndicatorView(style: .whiteLarge)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Currency rates"
         currencyListPresenter.viewDelegate = self
         setupTableView()
+        
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(spinner)
+        spinner.tintColor = .red
+        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
         currencyListPresenter.viewIsPrepared()
-        
-        
-//        let currency1 = CurrencyListModel(date: "12345", currency: "Dolar Amerykański", code: "USD", midValue: "123")
-//        let currency2 = CurrencyListModel(date: "12345", currency: "Dolar Amerykański", code: "USD", midValue: "123")
-//        let currency3 = CurrencyListModel(date: "12345", currency: "Dolar Amerykański", code: "USD", midValue: "123")
-//        let currency4 = CurrencyListModel(date: "12345", currency: "Dolar Amerykański", code: "USD", midValue: "123")
-//        let currency5 = CurrencyListModel(date: "12345", currency: "Dolar Amerykański", code: "USD", midValue: "123")
-//        self.currencyList.append(currency1)
-//        self.currencyList.append(currency2)
-//        self.currencyList.append(currency3)
-//        self.currencyList.append(currency4)
-//        self.currencyList.append(currency5)
-
     }
 
     func setupTableView() {
@@ -46,6 +41,14 @@ class CurrencyListVC: UIViewController {
         tableView.layoutMargins = UIEdgeInsets.zero
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.register(CurrencyListCell.self, forCellReuseIdentifier: CurrencyListCell.Identifier)
+    }
+    
+    func setupSegmentedControl() {
+        segmentedControl.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
+    }
+    
+    @objc fileprivate func handleSegmentChange() {
+        
     }
 
     fileprivate func configureStackView() {
@@ -72,7 +75,7 @@ extension CurrencyListVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 64
+        return 70
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -82,7 +85,7 @@ extension CurrencyListVC: UITableViewDelegate, UITableViewDataSource {
 
 }
 
-// MARK: ProfileViewDelegate
+// MARK: CurrencyListViewDelegate
 extension CurrencyListVC: CurrencyListViewDelegate {
     func showCurrencyData(_ data: [CurrencyListModel]) {
         currencyList = data
@@ -90,5 +93,22 @@ extension CurrencyListVC: CurrencyListViewDelegate {
             self.tableView.reloadData()
         }
     }
+    
+    func showDownloadCurrencyListDataError(withMessage: DisplayErrorModel) {
+        DispatchQueue.main.async {
+        let alert = CustomErrorAlert.setUpErrorAlert(withMessage)
+            self.present(alert, animated: true)
+        }
+    }
 
+    func showProgress() {
+        spinner.startAnimating()
+    }
+
+    func hideProgress() {
+        DispatchQueue.main.async {
+            self.tableView.refreshControl?.endRefreshing()
+            self.spinner.stopAnimating()
+        }
+    }
 }

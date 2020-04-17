@@ -49,7 +49,7 @@ class CurrencyListViewElements {
         let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
         stackView.distribution = .equalSpacing
         stackView.axis = .horizontal
-        stackView.spacing = 10
+        stackView.spacing = 8
         return stackView
     }
     
