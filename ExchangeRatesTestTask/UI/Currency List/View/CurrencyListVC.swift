@@ -79,7 +79,7 @@ extension CurrencyListVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        profilePresenter.profileClicked(indexPath.row)
+        currencyListPresenter.currencyClicked(indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
@@ -99,6 +99,11 @@ extension CurrencyListVC: CurrencyListViewDelegate {
         let alert = CustomErrorAlert.setUpErrorAlert(withMessage)
             self.present(alert, animated: true)
         }
+    }
+    
+    func showCurrencyDetails() {
+        let currencyDetailsVC = CurrencyDetailsVC()
+        navigationController?.pushViewController(currencyDetailsVC, animated: false)
     }
 
     func showProgress() {
