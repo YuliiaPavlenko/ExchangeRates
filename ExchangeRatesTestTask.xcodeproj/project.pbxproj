@@ -15,6 +15,7 @@
 		AF4A320E2448EDB800505803 /* CurrencyListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A320D2448EDB800505803 /* CurrencyListModel.swift */; };
 		AF4A32102448EDD000505803 /* CurrencyListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A320F2448EDD000505803 /* CurrencyListPresenter.swift */; };
 		AF4A32122448EDDF00505803 /* CurrencyListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A32112448EDDF00505803 /* CurrencyListVC.swift */; };
+		AF4A32152449A3CF00505803 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A32142449A3CF00505803 /* UIView+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		AF4A320D2448EDB800505803 /* CurrencyListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListModel.swift; sourceTree = "<group>"; };
 		AF4A320F2448EDD000505803 /* CurrencyListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListPresenter.swift; sourceTree = "<group>"; };
 		AF4A32112448EDDF00505803 /* CurrencyListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListVC.swift; sourceTree = "<group>"; };
+		AF4A32142449A3CF00505803 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				AF4A31FE2448E9F200505803 /* Data */,
 				AF4A32032448EA3600505803 /* UI */,
+				AF4A32132449A3B200505803 /* Utils */,
 				AF4A31EA24487E0B00505803 /* AppDelegate.swift */,
 				AF4A31EE24487E0B00505803 /* ViewController.swift */,
 				AF4A31F024487E0B00505803 /* Main.storyboard */,
@@ -185,6 +188,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		AF4A32132449A3B200505803 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AF4A32142449A3CF00505803 /* UIView+Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -260,6 +271,7 @@
 				AF4A32102448EDD000505803 /* CurrencyListPresenter.swift in Sources */,
 				AF4A32122448EDDF00505803 /* CurrencyListVC.swift in Sources */,
 				AF4A31EF24487E0B00505803 /* ViewController.swift in Sources */,
+				AF4A32152449A3CF00505803 /* UIView+Utils.swift in Sources */,
 				AF4A31EB24487E0B00505803 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
