@@ -17,8 +17,7 @@ class NetworkManager {
         session = URLSession(configuration: .default)
     }
 
-    func getCurrenciesForTable(tableName: String, completion: @escaping ((Currency?, ERError?) -> Void)) {
-        let url = URL(string: Router.getExchangeRatesForTable(tableName))!
+    private func getData<Data: Decodable>(url: URL, completion: @escaping ((Data?, ERError?) -> Void)) {
         let task = session.dataTask(with: url, completionHandler: { data, response, error in
 
             if let error = validateApiResponse(response: response, error: error) {
@@ -27,7 +26,7 @@ class NetworkManager {
             }
 
             do {
-                let json = try JSONDecoder().decode([Currency].self, from: data!)
+                let json = try JSONDecoder().decode([Data].self, from: data!)
 
                 completion(json[0], nil)
             } catch {
@@ -41,29 +40,13 @@ class NetworkManager {
         task.resume()
     }
 
-//    func getPostsForUser(userId: Int, completion: @escaping (([Post]?, ERError?) -> Void)) {
-//        let url = URL(string: Router.postsForUser(userId))!
-//        let task = session.dataTask(with: url, completionHandler: { data, response, error in
-//
-//            if let error = validateApiResponse(response: response, error: error) {
-//                completion(nil, error)
-//                return
-//            }
-//
-//            do {
-//                let json = try JSONDecoder().decode([Post].self, from: data! )
-//
-//                completion(json, nil)
-//
-//            } catch {
-//                print("Error during JSON serialization: \(error.localizedDescription)")
-//                var errorInfo = ErrorInfo()
-//                errorInfo.message = "Error during JSON serialization: \(error.localizedDescription)"
-//
-//                completion(nil, RTError.parsingResponseError(errorInfo: errorInfo))
-//            }
-//
-//        })
-//        task.resume()
-//    }
+    func getCurrenciesForTable(tableName: String, completion: @escaping ((Currency?, ERError?) -> Void)) {
+        let url = URL(string: Router.getExchangeRatesForTable(tableName))!
+        getData(url: url, completion: completion)
+    }
+
+    func getRatesForDates(tableName: String, startDate: String, endDate: String, completion: @escaping ((Currency?, ERError?) -> Void)) {
+        let url = URL(string: Router.getExchangeRatesForDates(startDate: startDate, endDate: endDate, tableName: tableName))!
+        getData(url: url, completion: completion)
+    }
 }
