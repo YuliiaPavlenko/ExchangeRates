@@ -30,10 +30,10 @@ class CurrencyListCell: UITableViewCell {
     }
     
     func configureWithCurrency(_ currency: CurrencyListModel) {
-        dateLabel.text = "Empty date"
-        currencyLabel.text = "Empty currency"
-        codeLabel.text = "+00 000 000 000"
-        midValueLabel.text = "No mid value"
+        dateLabel.text = currency.date ?? "Empty date"
+        currencyLabel.text = currency.currency ?? "Empty currency"
+        codeLabel.text = currency.code ?? "+00 000 000 000"
+        midValueLabel.text = currency.midValue ?? "No mid value"
     }
 
     required init?(coder aDecoder: NSCoder) {

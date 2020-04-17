@@ -18,6 +18,14 @@
 		AF4A32152449A3CF00505803 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A32142449A3CF00505803 /* UIView+Utils.swift */; };
 		AF4A32172449A58400505803 /* CurrencyListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A32162449A58400505803 /* CurrencyListCell.swift */; };
 		AF4A32192449A5A700505803 /* CurrencyListViewElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A32182449A5A700505803 /* CurrencyListViewElements.swift */; };
+		AF4A321B2449E66500505803 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A321A2449E66500505803 /* Currency.swift */; };
+		AF4A321D2449E67000505803 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A321C2449E67000505803 /* Rate.swift */; };
+		AF4A321F2449E6AD00505803 /* ResponseValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A321E2449E6AD00505803 /* ResponseValidator.swift */; };
+		AF4A32212449E6CF00505803 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A32202449E6CF00505803 /* Router.swift */; };
+		AF4A32232449E6EA00505803 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A32222449E6EA00505803 /* Config.swift */; };
+		AF4A32252449EA0800505803 /* ErrorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A32242449EA0800505803 /* ErrorInfo.swift */; };
+		AF4A32272449EA2700505803 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A32262449EA2700505803 /* ApiError.swift */; };
+		AF4A32292449EA9800505803 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A32282449EA9800505803 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +42,14 @@
 		AF4A32142449A3CF00505803 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		AF4A32162449A58400505803 /* CurrencyListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListCell.swift; sourceTree = "<group>"; };
 		AF4A32182449A5A700505803 /* CurrencyListViewElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListViewElements.swift; sourceTree = "<group>"; };
+		AF4A321A2449E66500505803 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		AF4A321C2449E67000505803 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
+		AF4A321E2449E6AD00505803 /* ResponseValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseValidator.swift; sourceTree = "<group>"; };
+		AF4A32202449E6CF00505803 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		AF4A32222449E6EA00505803 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		AF4A32242449EA0800505803 /* ErrorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorInfo.swift; sourceTree = "<group>"; };
+		AF4A32262449EA2700505803 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		AF4A32282449EA9800505803 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +107,8 @@
 		AF4A31FF2448E9FD00505803 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				AF4A321A2449E66500505803 /* Currency.swift */,
+				AF4A321C2449E67000505803 /* Rate.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -99,6 +117,10 @@
 			isa = PBXGroup;
 			children = (
 				AF4A32022448EA1B00505803 /* Error */,
+				AF4A321E2449E6AD00505803 /* ResponseValidator.swift */,
+				AF4A32202449E6CF00505803 /* Router.swift */,
+				AF4A32222449E6EA00505803 /* Config.swift */,
+				AF4A32282449EA9800505803 /* NetworkManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -106,6 +128,8 @@
 		AF4A32022448EA1B00505803 /* Error */ = {
 			isa = PBXGroup;
 			children = (
+				AF4A32242449EA0800505803 /* ErrorInfo.swift */,
+				AF4A32262449EA2700505803 /* ApiError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -273,8 +297,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF4A321B2449E66500505803 /* Currency.swift in Sources */,
 				AF4A32192449A5A700505803 /* CurrencyListViewElements.swift in Sources */,
+				AF4A32252449EA0800505803 /* ErrorInfo.swift in Sources */,
+				AF4A321F2449E6AD00505803 /* ResponseValidator.swift in Sources */,
+				AF4A32292449EA9800505803 /* NetworkManager.swift in Sources */,
 				AF4A320E2448EDB800505803 /* CurrencyListModel.swift in Sources */,
+				AF4A32212449E6CF00505803 /* Router.swift in Sources */,
+				AF4A321D2449E67000505803 /* Rate.swift in Sources */,
+				AF4A32232449E6EA00505803 /* Config.swift in Sources */,
+				AF4A32272449EA2700505803 /* ApiError.swift in Sources */,
 				AF4A32172449A58400505803 /* CurrencyListCell.swift in Sources */,
 				AF4A32102448EDD000505803 /* CurrencyListPresenter.swift in Sources */,
 				AF4A32122448EDDF00505803 /* CurrencyListVC.swift in Sources */,
@@ -426,6 +458,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ExchangeRatesTestTask/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -443,6 +476,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ExchangeRatesTestTask/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

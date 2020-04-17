@@ -19,21 +19,21 @@ class CurrencyListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Currency rates"
-//        profilePresenter.viewDelegate = self
+        currencyListPresenter.viewDelegate = self
         setupTableView()
-//        profilePresenter.viewIsPrepared()
+        currencyListPresenter.viewIsPrepared()
         
         
-        let currency1 = CurrencyListModel(date: "12345", currency: "Dolar Amerykański", code: "USD", midValue: "123")
-        let currency2 = CurrencyListModel(date: "12345", currency: "Dolar Amerykański", code: "USD", midValue: "123")
-        let currency3 = CurrencyListModel(date: "12345", currency: "Dolar Amerykański", code: "USD", midValue: "123")
-        let currency4 = CurrencyListModel(date: "12345", currency: "Dolar Amerykański", code: "USD", midValue: "123")
-        let currency5 = CurrencyListModel(date: "12345", currency: "Dolar Amerykański", code: "USD", midValue: "123")
-        self.currencyList.append(currency1)
-        self.currencyList.append(currency2)
-        self.currencyList.append(currency3)
-        self.currencyList.append(currency4)
-        self.currencyList.append(currency5)
+//        let currency1 = CurrencyListModel(date: "12345", currency: "Dolar Amerykański", code: "USD", midValue: "123")
+//        let currency2 = CurrencyListModel(date: "12345", currency: "Dolar Amerykański", code: "USD", midValue: "123")
+//        let currency3 = CurrencyListModel(date: "12345", currency: "Dolar Amerykański", code: "USD", midValue: "123")
+//        let currency4 = CurrencyListModel(date: "12345", currency: "Dolar Amerykański", code: "USD", midValue: "123")
+//        let currency5 = CurrencyListModel(date: "12345", currency: "Dolar Amerykański", code: "USD", midValue: "123")
+//        self.currencyList.append(currency1)
+//        self.currencyList.append(currency2)
+//        self.currencyList.append(currency3)
+//        self.currencyList.append(currency4)
+//        self.currencyList.append(currency5)
 
     }
 
@@ -78,6 +78,17 @@ extension CurrencyListVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        profilePresenter.profileClicked(indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+}
+
+// MARK: ProfileViewDelegate
+extension CurrencyListVC: CurrencyListViewDelegate {
+    func showCurrencyData(_ data: [CurrencyListModel]) {
+        currencyList = data
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 
 }
