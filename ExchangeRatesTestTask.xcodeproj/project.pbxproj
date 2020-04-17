@@ -26,6 +26,8 @@
 		AF4A32252449EA0800505803 /* ErrorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A32242449EA0800505803 /* ErrorInfo.swift */; };
 		AF4A32272449EA2700505803 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A32262449EA2700505803 /* ApiError.swift */; };
 		AF4A32292449EA9800505803 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A32282449EA9800505803 /* NetworkManager.swift */; };
+		AF4A322C244A04A800505803 /* DisplayError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A322B244A04A800505803 /* DisplayError.swift */; };
+		AF4A322E244A06E400505803 /* CustomErrorAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A322D244A06E400505803 /* CustomErrorAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		AF4A32242449EA0800505803 /* ErrorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorInfo.swift; sourceTree = "<group>"; };
 		AF4A32262449EA2700505803 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		AF4A32282449EA9800505803 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		AF4A322B244A04A800505803 /* DisplayError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayError.swift; sourceTree = "<group>"; };
+		AF4A322D244A06E400505803 /* CustomErrorAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomErrorAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 			children = (
 				AF4A32242449EA0800505803 /* ErrorInfo.swift */,
 				AF4A32262449EA2700505803 /* ApiError.swift */,
+				AF4A322B244A04A800505803 /* DisplayError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
@@ -147,6 +152,7 @@
 		AF4A32042448EA4000505803 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				AF4A322D244A06E400505803 /* CustomErrorAlert.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -302,6 +308,7 @@
 				AF4A32252449EA0800505803 /* ErrorInfo.swift in Sources */,
 				AF4A321F2449E6AD00505803 /* ResponseValidator.swift in Sources */,
 				AF4A32292449EA9800505803 /* NetworkManager.swift in Sources */,
+				AF4A322C244A04A800505803 /* DisplayError.swift in Sources */,
 				AF4A320E2448EDB800505803 /* CurrencyListModel.swift in Sources */,
 				AF4A32212449E6CF00505803 /* Router.swift in Sources */,
 				AF4A321D2449E67000505803 /* Rate.swift in Sources */,
@@ -312,6 +319,7 @@
 				AF4A32122448EDDF00505803 /* CurrencyListVC.swift in Sources */,
 				AF4A31EF24487E0B00505803 /* ViewController.swift in Sources */,
 				AF4A32152449A3CF00505803 /* UIView+Utils.swift in Sources */,
+				AF4A322E244A06E400505803 /* CustomErrorAlert.swift in Sources */,
 				AF4A31EB24487E0B00505803 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
