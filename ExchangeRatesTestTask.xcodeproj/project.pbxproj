@@ -12,6 +12,9 @@
 		AF4A31F224487E0B00505803 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF4A31F024487E0B00505803 /* Main.storyboard */; };
 		AF4A31F424487E0D00505803 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF4A31F324487E0D00505803 /* Assets.xcassets */; };
 		AF4A31F724487E0D00505803 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF4A31F524487E0D00505803 /* LaunchScreen.storyboard */; };
+		AF4A320E2448EDB800505803 /* CurrencyListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A320D2448EDB800505803 /* CurrencyListModel.swift */; };
+		AF4A32102448EDD000505803 /* CurrencyListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A320F2448EDD000505803 /* CurrencyListPresenter.swift */; };
+		AF4A32122448EDDF00505803 /* CurrencyListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A32112448EDDF00505803 /* CurrencyListVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		AF4A31F324487E0D00505803 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF4A31F624487E0D00505803 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF4A31F824487E0D00505803 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF4A320D2448EDB800505803 /* CurrencyListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListModel.swift; sourceTree = "<group>"; };
+		AF4A320F2448EDD000505803 /* CurrencyListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListPresenter.swift; sourceTree = "<group>"; };
+		AF4A32112448EDDF00505803 /* CurrencyListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyListVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,7 @@
 		AF4A32072448EB5800505803 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AF4A320D2448EDB800505803 /* CurrencyListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -144,6 +151,7 @@
 		AF4A32082448EB6200505803 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AF4A32112448EDDF00505803 /* CurrencyListVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -151,6 +159,7 @@
 		AF4A32092448EB7500505803 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				AF4A320F2448EDD000505803 /* CurrencyListPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -247,6 +256,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF4A320E2448EDB800505803 /* CurrencyListModel.swift in Sources */,
+				AF4A32102448EDD000505803 /* CurrencyListPresenter.swift in Sources */,
+				AF4A32122448EDDF00505803 /* CurrencyListVC.swift in Sources */,
 				AF4A31EF24487E0B00505803 /* ViewController.swift in Sources */,
 				AF4A31EB24487E0B00505803 /* AppDelegate.swift in Sources */,
 			);
