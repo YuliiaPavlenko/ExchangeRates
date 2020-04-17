@@ -11,19 +11,14 @@ import UIKit
 class CurrencyListVC: UIViewController {
     
     var currencyList = [CurrencyListModel]()
+    var currencyListPresenter = CurrencyListPresenter()
     
-    lazy var segmentedControl: UISegmentedControl = {
-        let control = UISegmentedControl(items: ["Table A", "Table B", "Table C"])
-        control.selectedSegmentIndex = 0
-        control.tintColor = .blue
-        return control
-    }()
-    
+    lazy var segmentedControl = CurrencyListViewElements.createSegmentedControl(withItems: ["Table A", "Table B", "Table C"])
     let tableView = UITableView(frame: .zero, style: .plain)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title =  "Currency rates"
+        navigationItem.title = "Currency rates"
 //        profilePresenter.viewDelegate = self
         setupTableView()
 //        profilePresenter.viewIsPrepared()

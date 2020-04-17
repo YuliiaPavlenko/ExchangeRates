@@ -53,4 +53,11 @@ class CurrencyListViewElements {
         return stackView
     }
     
+    static func createSegmentedControl(withItems: [String]) -> UISegmentedControl {
+        let control = UISegmentedControl(items: withItems)
+        control.selectedSegmentIndex = 0
+        control.tintColor = .blue
+        return control
+    }
+    
 }

@@ -6,4 +6,19 @@
 //  Copyright © 2020 Yuliia Pavlenko. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+protocol CurrencyListViewDelegate: class {
+    func showCurrencyDetails()
+    func showCurrencyData(_ data: [CurrencyListModel])
+}
+
+class CurrencyListPresenter {
+    var currencyList = [CurrencyListModel]()
+
+    weak var viewDelegate: CurrencyListViewDelegate?
+
+    func viewIsPrepared() {
+
+    }
+}
