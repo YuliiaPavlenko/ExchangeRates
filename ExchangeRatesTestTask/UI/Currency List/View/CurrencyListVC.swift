@@ -16,6 +16,8 @@ class CurrencyListVC: UIViewController {
     var currencyList = [CurrencyListModel]()
     var currencyListPresenter = CurrencyListPresenter()
     
+    let tablesForCurrencies = ["A","B","C"]
+    
     // MARK: - View Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -45,7 +47,7 @@ class CurrencyListVC: UIViewController {
     func configureView() {
         view.backgroundColor = .white
         
-        let codeSegmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 50, width: self.view.frame.width, height: 50), buttonTitle: ["A","B","C"])
+        let codeSegmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 50, width: self.view.frame.width, height: 50), buttonTitle: tablesForCurrencies)
         codeSegmented.delegate = self
         codeSegmented.backgroundColor = .clear
         view.addSubview(codeSegmented)
@@ -139,6 +141,7 @@ extension CurrencyListVC: CurrencyListViewDelegate {
 // MARK: CustomSegmentedControlDelegate
 extension CurrencyListVC: CustomSegmentedControlDelegate {
     func changeToIndex(index: Int) {
-        
+        let selectedTable = tablesForCurrencies[index]
+        currencyListPresenter.tableSelected(selectedTable)
     }
 }

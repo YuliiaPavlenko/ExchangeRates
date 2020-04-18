@@ -39,8 +39,16 @@ class CurrencyListPresenter {
         getCurrencyList()
     }
     
+    func tableSelected(_ tableName: String) {
+        selectedTable = tableName
+        
+        getCurrencyList()
+    }
+    
     // MARK: - Get data from server
     fileprivate func getCurrencyList() {
+        currencyList = []
+        
         NetworkManager.shared.getCurrenciesForTable(tableName: selectedTable!) { [weak self] (currency, error) in
             guard let self = self else { return }
             
