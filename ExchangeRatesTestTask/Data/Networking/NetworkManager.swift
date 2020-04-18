@@ -17,7 +17,7 @@ class NetworkManager {
         session = URLSession(configuration: .default)
     }
 
-    private func getData<Data: Decodable>(url: URL, completion: @escaping ((Data?, ERError?) -> Void)) {
+    private func getArrayOfData<Data: Decodable>(url: URL, completion: @escaping ((Data?, ERError?) -> Void)) {
         let task = session.dataTask(with: url, completionHandler: { data, response, error in
 
             if let error = validateApiResponse(response: response, error: error) {
@@ -65,7 +65,7 @@ class NetworkManager {
 
     func getCurrenciesForTable(tableName: String, completion: @escaping ((Currency?, ERError?) -> Void)) {
         let url = URL(string: Router.getExchangeRatesForTable(tableName))!
-        getData(url: url, completion: completion)
+        getArrayOfData(url: url, completion: completion)
     }
 
     func getRatesForDates(tableName: String, selectedCurrency: String, startDate: String, endDate: String, completion: @escaping ((Currency?, ERError?) -> Void)) {

@@ -9,21 +9,16 @@
 import UIKit
 
 class CurrencyListVC: UIViewController {
+
+    var refreshControl = UIRefreshControl()
+    let tableView = UITableView(frame: .zero, style: .plain)
     
     var currencyList = [CurrencyListModel]()
     var currencyListPresenter = CurrencyListPresenter()
-    var refreshControl = UIRefreshControl()
-
     
-//    lazy var customSegmentedControl = CurrencyListViewElements.createSegmentedControl(withItems: ["Table A", "Table B", "Table C"])
-    let tableView = UITableView(frame: .zero, style: .plain)
-    let customSegmentA = CurrencyListViewElements.createSegmentControlIem()
-    let customSegmentB = CurrencyListViewElements.createSegmentControlIem()
-    let customSegmentC = CurrencyListViewElements.createSegmentControlIem()
-    
+    // MARK: - View Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         customizeNavigationBar(animated)
     }
 
@@ -34,50 +29,54 @@ class CurrencyListVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         currencyListPresenter.viewDelegate = self
         setupTableView()
-        
+    
         currencyListPresenter.viewIsPrepared()
     }
     
-    func createCustomSegmentedControl() {
-        let segmentItemsStackView = CurrencyListViewElements.createHorizontalStackView(arrangedSubviews: [customSegmentA, customSegmentB, customSegmentC])
-        view.addSubview(segmentItemsStackView)
+    // MARK: - Custom Functions
+    func customizeNavigationBar(_ animated: Bool) {
+        title = "Currency rates".capitalized
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Colors.grayTitle, .font: Fonts.navigationTitle]
+    }
+    
+    func configureView() {
+        view.backgroundColor = .white
         
-        segmentItemsStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leftAnchor, bottom: nil, trailing: view.rightAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 30, enableInsets: false)
+        let codeSegmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 50, width: self.view.frame.width, height: 50), buttonTitle: ["A","B","C"])
+        codeSegmented.delegate = self
+        codeSegmented.backgroundColor = .clear
+        view.addSubview(codeSegmented)
         
-        tableView.anchor(top: segmentItemsStackView.bottomAnchor, leading: view.leftAnchor, bottom: view.bottomAnchor, trailing: view.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
+        codeSegmented.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leftAnchor, bottom: nil, trailing: view.rightAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 30, enableInsets: false)
+        
+        tableView.anchor(top: codeSegmented.bottomAnchor, leading: view.leftAnchor, bottom: view.bottomAnchor, trailing: view.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
     }
 
     func setupTableView() {
         view.addSubview(tableView)
-        createCustomSegmentedControl()
+        configureView()
 
         tableView.delegate = self
         tableView.dataSource = self
         tableView.layoutMargins = UIEdgeInsets.zero
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.register(CurrencyListCell.self, forCellReuseIdentifier: CurrencyListCell.Identifier)
+        
         configureRefreshControl()
     }
     
     func configureRefreshControl() {
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        
         tableView.addSubview(refreshControl)
     }
     
     @objc func refresh() {
         currencyListPresenter.onRefreshSwiped()
-    }
-    
-    @objc fileprivate func handleSegmentChange() {
-        
-    }
-    
-    func customizeNavigationBar(_ animated: Bool) {
-        title = "Currency rates".capitalized
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Colors.grayTitle, .font: Fonts.navigationTitle]
     }
 }
 
@@ -134,5 +133,12 @@ extension CurrencyListVC: CurrencyListViewDelegate {
         DispatchQueue.main.async {
             self.refreshControl.endRefreshing()
         }
+    }
+}
+
+// MARK: CustomSegmentedControlDelegate
+extension CurrencyListVC: CustomSegmentedControlDelegate {
+    func changeToIndex(index: Int) {
+        
     }
 }

@@ -20,6 +20,7 @@ class CurrencyDetailsVC: UIViewController {
     var currencyDetailsList = [CurrencyDetailsModel]()
     var currencyDetailsPresenter = CurrencyDetailsPresenter()
     
+    // MARK: - View Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.backgroundColor = .white
@@ -35,6 +36,11 @@ class CurrencyDetailsVC: UIViewController {
         currencyDetailsPresenter.viewDelegate = self
         setupTableView()
         configureRefreshControl()
+    }
+    
+    // MARK: - Custom Functions
+    func customizeNavigationBar(_ animated: Bool) {
+        title = currencyDetailsPresenter.selectedCurrencyRate?.currency?.capitalized
     }
     
     func setupTableView() {
@@ -54,10 +60,6 @@ class CurrencyDetailsVC: UIViewController {
     
     @objc func refresh() {
         currencyDetailsPresenter.onRefreshSwiped()
-    }
-    
-    func customizeNavigationBar(_ animated: Bool) {
-        title = currencyDetailsPresenter.selectedCurrencyRate?.currency?.capitalized
     }
 
     func configureDateTextFields() {

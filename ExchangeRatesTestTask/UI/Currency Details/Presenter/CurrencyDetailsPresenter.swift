@@ -49,6 +49,7 @@ class CurrencyDetailsPresenter {
         getCurrencyHistory()
     }
     
+    // MARK: - Get data from server
     fileprivate func getCurrencyHistory() {
         let tableName = Cache.shared.getSelectedCurrencyTable()!
         

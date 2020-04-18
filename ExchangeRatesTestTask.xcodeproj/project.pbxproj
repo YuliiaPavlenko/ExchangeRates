@@ -35,6 +35,7 @@
 		AF4A323F244A404900505803 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A323E244A404900505803 /* Colors.swift */; };
 		AF4A3241244A40E600505803 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A3240244A40E600505803 /* Fonts.swift */; };
 		AF4A3248244B394600505803 /* CurrencyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A3247244B394600505803 /* CurrencyDetailsCell.swift */; };
+		AF4A3250244B78D300505803 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A324F244B78D200505803 /* CustomSegmentedControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		AF4A323E244A404900505803 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		AF4A3240244A40E600505803 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		AF4A3247244B394600505803 /* CurrencyDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsCell.swift; sourceTree = "<group>"; };
+		AF4A324F244B78D200505803 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 				AF4A32112448EDDF00505803 /* CurrencyListVC.swift */,
 				AF4A32162449A58400505803 /* CurrencyListCell.swift */,
 				AF4A32182449A5A700505803 /* CurrencyListViewElements.swift */,
+				AF4A324F244B78D200505803 /* CustomSegmentedControl.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				AF4A32172449A58400505803 /* CurrencyListCell.swift in Sources */,
 				AF4A32102448EDD000505803 /* CurrencyListPresenter.swift in Sources */,
 				AF4A32122448EDDF00505803 /* CurrencyListVC.swift in Sources */,
+				AF4A3250244B78D300505803 /* CustomSegmentedControl.swift in Sources */,
 				AF4A32152449A3CF00505803 /* UIView+Utils.swift in Sources */,
 				AF4A322E244A06E400505803 /* CustomErrorAlert.swift in Sources */,
 				AF4A3234244A1D8000505803 /* CurrencyDetailsPresenter.swift in Sources */,
