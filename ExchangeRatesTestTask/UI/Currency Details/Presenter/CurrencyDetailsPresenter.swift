@@ -65,4 +65,21 @@ class CurrencyDetailsPresenter {
 //        let selectedImage = hardcodedImages[imageIndex]
 //        return selectedImage
 //    }
+    func setMidValue() -> String {
+        return getMidValue(selectedCurrencyRate)
+    }
+    
+    func getMidValue(_ rate: Rate?) -> String {
+        let midValue: String
+        if let mid = rate?.mid {
+            midValue = String(mid)
+        } else if let ask = rate?.ask,
+            let bid = rate?.bid {
+            midValue = String((ask + bid) / 2)
+        } else {
+            midValue = "No value"
+        }
+        return midValue
+    }
+    
 }

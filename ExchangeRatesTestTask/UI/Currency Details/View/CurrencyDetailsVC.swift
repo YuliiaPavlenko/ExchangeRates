@@ -10,6 +10,8 @@ import UIKit
 
 class CurrencyDetailsVC: UIViewController {
     
+    let midTitleLabel = CurrencyDetailsViewElements.createMidTitleLabel()
+    let midValueLabel = CurrencyDetailsViewElements.createMidValueLabel()
     let startDateTextField = CurrencyDetailsViewElements.createDateTextField()
     let endDateTextField = CurrencyDetailsViewElements.createDateTextField()
     let startDatePicker = UIDatePicker()
@@ -19,7 +21,7 @@ class CurrencyDetailsVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        view.backgroundColor = Colors.white
+        view.backgroundColor = .white
         customizeNavigationBar(true)
 //        currencyDetailsPresenter.viewIsPrepared()
         
@@ -29,12 +31,24 @@ class CurrencyDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDateTextFields()
+        configureMidValueLabel()
     }
     
     func customizeNavigationBar(_ animated: Bool) {
         title = currencyDetailsPresenter.selectedCurrencyRate?.currency?.capitalized
     }
     
+    func configureMidValueLabel() {
+        
+        let midValueStackView = CurrencyDetailsViewElements.createHorizontalStackView(arrangedSubviews: [midTitleLabel, midValueLabel])
+        view.addSubview(midValueStackView)
+        
+        midValueStackView.anchor(top: startDateTextField.bottomAnchor, leading: view.leftAnchor, bottom: nil, trailing: view.rightAnchor, paddingTop: 10, paddingLeft: 25, paddingBottom: 0, paddingRight: 25, width: 0, height: 0, enableInsets: false)
+        
+        midTitleLabel.text = "Mid Value"
+        midValueLabel.text = currencyDetailsPresenter.setMidValue()
+    }
+
     func configureDateTextFields() {
         startDateTextField.placeholder = "Enter start date"
         endDateTextField.placeholder = "Enter end date"

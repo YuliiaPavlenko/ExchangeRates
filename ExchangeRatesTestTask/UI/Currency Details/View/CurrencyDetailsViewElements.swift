@@ -20,7 +20,7 @@ class CurrencyDetailsViewElements {
         return dateTextField
     }
     
-    static func createHorizontalStackView(arrangedSubviews: [UITextField]) -> UIStackView {
+    static func createHorizontalStackView(arrangedSubviews: [UIView]) -> UIStackView {
         let stackView = UIStackView(arrangedSubviews: arrangedSubviews)
         stackView.distribution = .equalSpacing
         stackView.axis = .horizontal
@@ -28,4 +28,21 @@ class CurrencyDetailsViewElements {
         return stackView
     }
     
+    static func createMidTitleLabel() -> UILabel {
+        let currencyLabel = UILabel()
+        currencyLabel.textColor = Colors.grayTitle
+        currencyLabel.font = Fonts.title
+        currencyLabel.textAlignment = .left
+        currencyLabel.numberOfLines = 0
+        return currencyLabel
+    }
+    
+    static func createMidValueLabel() -> UILabel {
+        let midValueLabel = UILabel()
+        midValueLabel.textColor = Colors.grayTitle
+        midValueLabel.font = Fonts.title
+        midValueLabel.textAlignment = .left
+        midValueLabel.numberOfLines = 0
+        return midValueLabel
+    }
 }
