@@ -44,7 +44,9 @@ enum DisplayError {
         let errorDescription = "Error get rates"
         var message: String?
         switch erError {
-        case .serverError, .unknown, .communicationError:
+        case .serverError:
+            message = "No data for selected period.\nPlease select another dates."
+        case .unknown, .communicationError:
             message = "Failed to get rates for selected dates. Please make sure you\'re connected to the internet and try again.\nContact support if the problem continues."
         default:
             message = "Unknown error"

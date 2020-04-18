@@ -70,7 +70,7 @@ class CurrencyDetailsPresenter {
                 self.viewDelegate?.showCurrencyDetails(self.currencyDetailsList)
             } else {
                 if let error = error {
-                    self.viewDelegate?.showDownloadCurrencyDetailsError(withMessage: DisplayError.currencyList.displayMessage(erError: error))
+                    self.viewDelegate?.showDownloadCurrencyDetailsError(withMessage: DisplayError.rates.displayMessage(erError: error))
                 }
             }
         }
