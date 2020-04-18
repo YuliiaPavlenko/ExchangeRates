@@ -9,8 +9,9 @@
 import Foundation
 
 protocol CurrencyDetailsViewDelegate: class {
-    func showCurrencyDetails(_ data: CurrencyDetailsModel)
+    func showCurrencyDetails(_ data: [CurrencyDetailsModel])
     func showCurrencyDetailsError()
+    func showDownloadCurrencyDetailsError(withMessage: DisplayErrorModel)
     func setStartDate(_ date: String)
     func setEndDate(_ date: String)
     func showProgress()
@@ -19,9 +20,9 @@ protocol CurrencyDetailsViewDelegate: class {
 
 class CurrencyDetailsPresenter {
     let selectedCurrencyRate = Cache.shared.getSelectedCurrencyRate()
-    var currencyDetails = [CurrencyDetailsModel]()
-    var startDate: String?
-    var endDate: String?
+    var currencyDetailsList = [CurrencyDetailsModel]()
+    var startDate: String? = "2012-01-01"
+    var endDate: String? = "2012-01-31"
     
     var formatter: DateFormatter {
         let formatter = DateFormatter()
@@ -29,33 +30,35 @@ class CurrencyDetailsPresenter {
         return formatter
     }
     weak var viewDelegate: CurrencyDetailsViewDelegate?
-//
-//    func viewIsPrepared() {
-//        if let currencyRate = selectedCurrencyRate {
-//            viewDelegate?.showProgress()
-//
-//            NetworkManager.shared.getRatesForDates(tableName: "C", startDate: "", endDate: "") { [weak self] (currency, error) in
-//                guard let self = self else { return }
-//
-//                self.viewDelegate?.hideProgress()
-//
-//                if let currency = currency {
-//
-//                    for rate in currency.rates {
-//                        let currency = CurrencyDetailsModel(startDate: startDate, endDate: endDate, currency: )
-//                        self.currencyDetails.append(currency)
-//                    }
-//
-//                } else {
-//                    if let error = error {
-//                        self.viewDelegate?.showDownloadCurrencyListDataError(withMessage: DisplayError.currencyList.displayMessage(erError: error))
-//                    }
-//                }
-//            }
-//        } else {
-//            viewDelegate?.showCurrencyDetailsError()
-//        }
-//    }
+
+    func viewIsPrepared() {
+        if selectedCurrencyRate != nil {
+            viewDelegate?.showProgress()
+            
+            let tableName = Cache.shared.getSelectedCurrencyTable()!
+            
+            NetworkManager.shared.getRatesForDates(tableName: tableName, selectedCurrency: (selectedCurrencyRate?.code)!, startDate: startDate!, endDate: endDate!) { [weak self] (currency, error) in
+                guard let self = self else { return }
+
+                self.viewDelegate?.hideProgress()
+
+                if currency != nil {
+                    for rate in currency!.rates {
+                        let currencyDetails = CurrencyDetailsModel(date: rate.effectiveDate, midValue: self.getMidValue(rate))
+                        self.currencyDetailsList.append(currencyDetails)
+                    }
+                    
+                    self.viewDelegate?.showCurrencyDetails(self.currencyDetailsList)
+                } else {
+                    if let error = error {
+                        self.viewDelegate?.showDownloadCurrencyDetailsError(withMessage: DisplayError.currencyList.displayMessage(erError: error))
+                    }
+                }
+            }
+        } else {
+            viewDelegate?.showCurrencyDetailsError()
+        }
+    }
 
     func setMidValue() -> String {
         return getMidValue(selectedCurrencyRate)
@@ -84,5 +87,4 @@ class CurrencyDetailsPresenter {
         endDate = formatter.string(from: date)
         viewDelegate?.setEndDate(endDate!)
     }
-    
 }

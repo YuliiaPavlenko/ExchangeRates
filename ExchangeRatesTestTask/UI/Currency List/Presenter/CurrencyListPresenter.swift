@@ -19,18 +19,20 @@ protocol CurrencyListViewDelegate: class {
 class CurrencyListPresenter {
     var currencyList = [CurrencyListModel]()
     var originalCurrencyList = [Rate]()
+    var selectedTable: String? = "A"
     
     weak var viewDelegate: CurrencyListViewDelegate?
     
     func currencyClicked(_ atIndex: Int) {
         Cache.shared.setSelectedCurrencyRate(originalCurrencyList[atIndex])
+        Cache.shared.setSelectedCurrencyTable(selectedTable!)
         viewDelegate?.showCurrencyDetails()
     }
 
     func viewIsPrepared() {
         viewDelegate?.showProgress()
         
-        NetworkManager.shared.getCurrenciesForTable(tableName: "C") { [weak self] (currency, error) in
+        NetworkManager.shared.getCurrenciesForTable(tableName: selectedTable!) { [weak self] (currency, error) in
             guard let self = self else { return }
 
             self.viewDelegate?.hideProgress()

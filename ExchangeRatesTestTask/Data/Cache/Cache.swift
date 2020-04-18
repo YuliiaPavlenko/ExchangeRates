@@ -12,6 +12,7 @@ class Cache {
     static let shared = Cache()
 
     private var selectedCurrencyRate: Rate?
+    private var selectedCurrencyTable: String?
 
     private init() {
     }
@@ -22,6 +23,14 @@ class Cache {
 
     func getSelectedCurrencyRate() -> Rate? {
         return selectedCurrencyRate
+    }
+    
+    func setSelectedCurrencyTable(_ tableName: String) {
+        selectedCurrencyTable = tableName
+    }
+
+    func getSelectedCurrencyTable() -> String? {
+        return selectedCurrencyTable
     }
 
 }

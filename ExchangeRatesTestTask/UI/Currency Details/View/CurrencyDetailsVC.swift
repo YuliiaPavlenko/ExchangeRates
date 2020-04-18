@@ -10,20 +10,20 @@ import UIKit
 
 class CurrencyDetailsVC: UIViewController {
     
-    let midTitleLabel = CurrencyDetailsViewElements.createMidTitleLabel()
-    let midValueLabel = CurrencyDetailsViewElements.createMidValueLabel()
     let startDateTextField = CurrencyDetailsViewElements.createDateTextField()
     let endDateTextField = CurrencyDetailsViewElements.createDateTextField()
     let startDatePicker = UIDatePicker()
     let endDatePicker = UIDatePicker()
+    let tableView = UITableView(frame: .zero, style: .plain)
 
+    var currencyDetailsList = [CurrencyDetailsModel]()
     var currencyDetailsPresenter = CurrencyDetailsPresenter()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.backgroundColor = .white
         customizeNavigationBar(true)
-//        currencyDetailsPresenter.viewIsPrepared()
+        currencyDetailsPresenter.viewIsPrepared()
         configureStartDatePicker()
         configureEndDatePicker()
     }
@@ -31,23 +31,23 @@ class CurrencyDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDateTextFields()
-        configureMidValueLabel()
         currencyDetailsPresenter.viewDelegate = self
+        setupTableView()
+    }
+    
+    func setupTableView() {
+//        view.addSubview(tableView)
+
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.layoutMargins = UIEdgeInsets.zero
+        tableView.separatorInset = UIEdgeInsets.zero
+        tableView.register(CurrencyDetailsCell.self, forCellReuseIdentifier: CurrencyDetailsCell.Identifier)
+        
     }
     
     func customizeNavigationBar(_ animated: Bool) {
         title = currencyDetailsPresenter.selectedCurrencyRate?.currency?.capitalized
-    }
-    
-    func configureMidValueLabel() {
-        
-        let midValueStackView = CurrencyDetailsViewElements.createHorizontalStackView(arrangedSubviews: [midTitleLabel, midValueLabel])
-        view.addSubview(midValueStackView)
-        
-        midValueStackView.anchor(top: startDateTextField.bottomAnchor, leading: view.leftAnchor, bottom: nil, trailing: view.rightAnchor, paddingTop: 10, paddingLeft: 25, paddingBottom: 0, paddingRight: 25, width: 0, height: 0, enableInsets: false)
-        
-        midTitleLabel.text = "Mid Value"
-        midValueLabel.text = currencyDetailsPresenter.setMidValue()
     }
 
     func configureDateTextFields() {
@@ -56,8 +56,9 @@ class CurrencyDetailsVC: UIViewController {
         
         let datesStackView = CurrencyDetailsViewElements.createHorizontalStackView(arrangedSubviews: [startDateTextField, endDateTextField])
         view.addSubview(datesStackView)
-        
+        view.addSubview(tableView)
         datesStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leftAnchor, bottom: nil, trailing: view.rightAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 0, enableInsets: false)
+        tableView.anchor(top: datesStackView.bottomAnchor, leading: view.leftAnchor, bottom: view.bottomAnchor, trailing: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
     }
     
     func configureToolBar(doneButtonAction: Selector?) -> UIToolbar {
@@ -93,15 +94,48 @@ class CurrencyDetailsVC: UIViewController {
 
 }
 
+// MARK: - UITableView Delegate & DataSource
+extension CurrencyDetailsVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return currencyDetailsList.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyDetailsCell.Identifier, for: indexPath) as! CurrencyDetailsCell
+        let currentItem = currencyDetailsList[indexPath.row]
+        cell.configureWithCurrency(currentItem)
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+
+}
+
 // MARK: CurrencyDetailsViewDelegate
 extension CurrencyDetailsVC: CurrencyDetailsViewDelegate {
-    func showCurrencyDetails(_ data: CurrencyDetailsModel) {
-        
+    func showCurrencyDetails(_ data: [CurrencyDetailsModel]) {
+        currencyDetailsList = data
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     func showCurrencyDetailsError() {
-        
+        DispatchQueue.main.async {
+            let alert = CustomErrorAlert.setUpErrorAlert(nil)
+            self.present(alert, animated: true)
+        }
     }
+
+    func showDownloadCurrencyDetailsError(withMessage: DisplayErrorModel) {
+        DispatchQueue.main.async {
+            let alert = CustomErrorAlert.setUpErrorAlert(withMessage)
+            self.present(alert, animated: true)
+        }
+    }
+    
     
     func setStartDate(_ date: String) {
         startDateTextField.text = date

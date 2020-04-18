@@ -45,4 +45,12 @@ class CurrencyDetailsViewElements {
         midValueLabel.numberOfLines = 0
         return midValueLabel
     }
+    
+    static func createDateLabel() -> UILabel {
+        let dateLabel = UILabel()
+        dateLabel.textColor = .black
+        dateLabel.font = Fonts.titleBold
+        dateLabel.textAlignment = .left
+        return dateLabel
+    }
 }

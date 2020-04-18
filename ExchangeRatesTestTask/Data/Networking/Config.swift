@@ -9,5 +9,5 @@
 import Foundation
 
 class Config {
-    static let baseURL = "https://api.nbp.pl/api/exchangerates/tables/"
+    static let baseURL = "https://api.nbp.pl/api/exchangerates/"
 }

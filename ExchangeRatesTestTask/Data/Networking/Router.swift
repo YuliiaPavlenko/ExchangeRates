@@ -11,10 +11,10 @@ import Foundation
 class Router {
     
     static func getExchangeRatesForTable(_ tableName: String) -> String {
-        return Config.baseURL + "\(tableName)/"
+        return Config.baseURL + "tables/\(tableName)/"
     }
     
-    static func getExchangeRatesForDates(startDate: String, endDate: String, tableName: String) -> String {
-        return getExchangeRatesForTable(tableName) + "\(startDate)/" + "\(endDate)/"
+    static func getExchangeRatesForDates(startDate: String, endDate: String, tableName: String, selectedCurrency: String) -> String {
+        return Config.baseURL + "rates/\(tableName)/" + "\(selectedCurrency)/" + "\(startDate)/" + "\(endDate)/"
     }
 }

@@ -9,8 +9,7 @@
 import Foundation
 
 struct CurrencyDetailsModel {
-    var startDate: String?
-    var endDate: String?
-    var currency: String?
+    var date: String?
+//    var currency: String?
     var midValue: String?
 }

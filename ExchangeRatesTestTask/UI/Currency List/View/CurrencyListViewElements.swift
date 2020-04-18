@@ -53,10 +53,13 @@ class CurrencyListViewElements {
         return stackView
     }
     
-    static func createSegmentedControl(withItems: [String]) -> UISegmentedControl {
-        let control = UISegmentedControl(items: withItems)
-        control.selectedSegmentIndex = 0
-        control.tintColor = .blue
-        return control
+    static func createSegmentControlIem() -> UILabel {
+        let midValueLabel = UILabel()
+        midValueLabel.textColor = .white
+        midValueLabel.text = "A"
+        midValueLabel.font = Fonts.title
+        midValueLabel.textAlignment = .left
+        midValueLabel.numberOfLines = 1
+        return midValueLabel
     }
 }

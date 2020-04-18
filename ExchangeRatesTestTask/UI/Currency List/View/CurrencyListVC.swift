@@ -13,9 +13,12 @@ class CurrencyListVC: UIViewController {
     var currencyList = [CurrencyListModel]()
     var currencyListPresenter = CurrencyListPresenter()
     
-    lazy var segmentedControl = CurrencyListViewElements.createSegmentedControl(withItems: ["Table A", "Table B", "Table C"])
+//    lazy var customSegmentedControl = CurrencyListViewElements.createSegmentedControl(withItems: ["Table A", "Table B", "Table C"])
     let tableView = UITableView(frame: .zero, style: .plain)
     let spinner = UIActivityIndicatorView(style: .whiteLarge)
+    let customSegmentA = CurrencyListViewElements.createSegmentControlIem()
+    let customSegmentB = CurrencyListViewElements.createSegmentControlIem()
+    let customSegmentC = CurrencyListViewElements.createSegmentControlIem()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -41,10 +44,19 @@ class CurrencyListVC: UIViewController {
         
         currencyListPresenter.viewIsPrepared()
     }
+    
+    func createCustomSegmentedControl() {
+        let segmentItemsStackView = CurrencyListViewElements.createHorizontalStackView(arrangedSubviews: [customSegmentA, customSegmentB, customSegmentC])
+        view.addSubview(segmentItemsStackView)
+        
+        segmentItemsStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leftAnchor, bottom: nil, trailing: view.rightAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 30, enableInsets: false)
+        
+        tableView.anchor(top: segmentItemsStackView.bottomAnchor, leading: view.leftAnchor, bottom: view.bottomAnchor, trailing: view.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
+    }
 
     func setupTableView() {
         view.addSubview(tableView)
-        configureStackView()
+        createCustomSegmentedControl()
 
         tableView.delegate = self
         tableView.dataSource = self
@@ -53,28 +65,17 @@ class CurrencyListVC: UIViewController {
         tableView.register(CurrencyListCell.self, forCellReuseIdentifier: CurrencyListCell.Identifier)
     }
     
-    func setupSegmentedControl() {
-        segmentedControl.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
-    }
+//    func setupSegmentedControl() {
+//        segmentedControl.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
+//    }
     
     @objc fileprivate func handleSegmentChange() {
         
     }
-
-    fileprivate func configureStackView() {
-        let stackView = UIStackView(arrangedSubviews: [segmentedControl, tableView])
-        stackView.axis = .vertical
-        
-        view.addSubview(stackView)
-
-        stackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leftAnchor, bottom: view.bottomAnchor, trailing: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
-    }
     
     func customizeNavigationBar(_ animated: Bool) {
         title = "Currency rates".capitalized
-//        navigationController?.navigationBar.barTintColor = Colors.green
-//        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Colors.white, .font: Fonts.navigationTitle!]
-//        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Colors.grayTitle, .font: Fonts.navigationTitle]
     }
 }
 

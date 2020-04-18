@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AF4A31EB24487E0B00505803 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A31EA24487E0B00505803 /* AppDelegate.swift */; };
-		AF4A31EF24487E0B00505803 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A31EE24487E0B00505803 /* ViewController.swift */; };
 		AF4A31F224487E0B00505803 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF4A31F024487E0B00505803 /* Main.storyboard */; };
 		AF4A31F424487E0D00505803 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF4A31F324487E0D00505803 /* Assets.xcassets */; };
 		AF4A31F724487E0D00505803 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF4A31F524487E0D00505803 /* LaunchScreen.storyboard */; };
@@ -35,12 +34,12 @@
 		AF4A323D244A3D0700505803 /* CurrencyDetailsViewElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A323C244A3D0700505803 /* CurrencyDetailsViewElements.swift */; };
 		AF4A323F244A404900505803 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A323E244A404900505803 /* Colors.swift */; };
 		AF4A3241244A40E600505803 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A3240244A40E600505803 /* Fonts.swift */; };
+		AF4A3248244B394600505803 /* CurrencyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A3247244B394600505803 /* CurrencyDetailsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AF4A31E724487E0B00505803 /* ExchangeRatesTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeRatesTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF4A31EA24487E0B00505803 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AF4A31EE24487E0B00505803 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AF4A31F124487E0B00505803 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF4A31F324487E0D00505803 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF4A31F624487E0D00505803 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -68,6 +67,7 @@
 		AF4A323C244A3D0700505803 /* CurrencyDetailsViewElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsViewElements.swift; sourceTree = "<group>"; };
 		AF4A323E244A404900505803 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		AF4A3240244A40E600505803 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		AF4A3247244B394600505803 /* CurrencyDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +104,6 @@
 				AF4A32032448EA3600505803 /* UI */,
 				AF4A32132449A3B200505803 /* Utils */,
 				AF4A31EA24487E0B00505803 /* AppDelegate.swift */,
-				AF4A31EE24487E0B00505803 /* ViewController.swift */,
 				AF4A31F024487E0B00505803 /* Main.storyboard */,
 				AF4A31F324487E0D00505803 /* Assets.xcassets */,
 				AF4A31F524487E0D00505803 /* LaunchScreen.storyboard */,
@@ -232,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				AF4A3231244A1D6A00505803 /* CurrencyDetailsVC.swift */,
+				AF4A3247244B394600505803 /* CurrencyDetailsCell.swift */,
 				AF4A323C244A3D0700505803 /* CurrencyDetailsViewElements.swift */,
 			);
 			path = View;
@@ -335,6 +335,7 @@
 				AF4A3232244A1D6A00505803 /* CurrencyDetailsVC.swift in Sources */,
 				AF4A323F244A404900505803 /* Colors.swift in Sources */,
 				AF4A321B2449E66500505803 /* Currency.swift in Sources */,
+				AF4A3248244B394600505803 /* CurrencyDetailsCell.swift in Sources */,
 				AF4A3230244A1D5D00505803 /* CurrencyDetailsModel.swift in Sources */,
 				AF4A32192449A5A700505803 /* CurrencyListViewElements.swift in Sources */,
 				AF4A323D244A3D0700505803 /* CurrencyDetailsViewElements.swift in Sources */,
@@ -352,7 +353,6 @@
 				AF4A32172449A58400505803 /* CurrencyListCell.swift in Sources */,
 				AF4A32102448EDD000505803 /* CurrencyListPresenter.swift in Sources */,
 				AF4A32122448EDDF00505803 /* CurrencyListVC.swift in Sources */,
-				AF4A31EF24487E0B00505803 /* ViewController.swift in Sources */,
 				AF4A32152449A3CF00505803 /* UIView+Utils.swift in Sources */,
 				AF4A322E244A06E400505803 /* CustomErrorAlert.swift in Sources */,
 				AF4A3234244A1D8000505803 /* CurrencyDetailsPresenter.swift in Sources */,
