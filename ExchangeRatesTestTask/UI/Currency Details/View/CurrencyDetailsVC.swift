@@ -20,7 +20,5 @@ class CurrencyDetailsVC: UIViewController {
     
     func customizeNavigationBar(_ animated: Bool) {
         title = currencyDetailsPresenter.selectedCurrencyRate?.currency?.capitalized
-//        navigationController?.navigationBar.barTintColor = Colors.green
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: Colors.grayTitle, .font: Fonts.bigTitleBold!]
     }
 }

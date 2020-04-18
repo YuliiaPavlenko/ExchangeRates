@@ -33,7 +33,7 @@ class CurrencyListCell: UITableViewCell {
         dateLabel.text = currency.date ?? "Empty date"
         currencyLabel.text = currency.currency ?? "Empty currency"
         codeLabel.text = currency.code ?? "Empty code"
-        midValueLabel.text = currency.midValue ?? "No mid value"
+        midValueLabel.text = currency.midValue
     }
 
     required init?(coder aDecoder: NSCoder) {

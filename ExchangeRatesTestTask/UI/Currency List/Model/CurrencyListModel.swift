@@ -10,5 +10,5 @@ struct CurrencyListModel {
     var date: String?
     var currency: String?
     var code: String?
-    var midValue: String?
+    var midValue: String
 }

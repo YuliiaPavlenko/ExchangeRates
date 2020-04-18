@@ -30,7 +30,7 @@ class CurrencyListPresenter {
     func viewIsPrepared() {
         viewDelegate?.showProgress()
         
-        NetworkManager.shared.getCurrenciesForTable(tableName: "B") { [weak self] (currency, error) in
+        NetworkManager.shared.getCurrenciesForTable(tableName: "C") { [weak self] (currency, error) in
             guard let self = self else { return }
 
             self.viewDelegate?.hideProgress()
@@ -39,7 +39,7 @@ class CurrencyListPresenter {
                 self.originalCurrencyList = currency.rates
 
                 for rate in currency.rates {
-                    let currency = CurrencyListModel(date: currency.effectiveDate, currency: rate.currency, code: rate.code, midValue: String(rate.mid!))
+                    let currency = CurrencyListModel(date: currency.effectiveDate, currency: rate.currency, code: rate.code, midValue: self.getMidValue(rate))
                     self.currencyList.append(currency)
                 }
 
@@ -50,6 +50,18 @@ class CurrencyListPresenter {
                 }
             }
         }
-
+    }
+    
+    func getMidValue(_ rate: Rate) -> String {
+        let midValue: String
+        if let mid = rate.mid {
+            midValue = String(mid)
+        } else if let ask = rate.ask,
+                  let bid = rate.bid {
+            midValue = String((ask + bid) / 2)
+        } else {
+            midValue = "No value"
+        }
+        return midValue
     }
 }
