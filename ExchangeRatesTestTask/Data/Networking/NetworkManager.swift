@@ -17,6 +17,7 @@ class NetworkManager {
         session = URLSession(configuration: .default)
     }
 
+    // MARK: - Generic methods
     private func getArrayOfData<Data: Decodable>(url: URL, completion: @escaping ((Data?, ERError?) -> Void)) {
         let task = session.dataTask(with: url, completionHandler: { data, response, error in
 
@@ -30,10 +31,7 @@ class NetworkManager {
 
                 completion(json[0], nil)
             } catch {
-                var errorInfo = ErrorInfo()
-                errorInfo.message = "Error during JSON serialization: \(error.localizedDescription)"
-
-                completion(nil, ERError.parsingResponseError(errorInfo: errorInfo))
+                completion(nil, ERError.parsingResponseError(errorInfo: self.parseJsonError(error: error)))
             }
 
         })
@@ -53,16 +51,14 @@ class NetworkManager {
 
                 completion(json, nil)
             } catch {
-                var errorInfo = ErrorInfo()
-                errorInfo.message = "Error during JSON serialization: \(error.localizedDescription)"
-
-                completion(nil, ERError.parsingResponseError(errorInfo: errorInfo))
+                completion(nil, ERError.parsingResponseError(errorInfo: self.parseJsonError(error: error)))
             }
 
         })
         task.resume()
     }
-
+    
+    // MARK: - Get data from server
     func getCurrenciesForTable(tableName: String, completion: @escaping ((Currency?, ERError?) -> Void)) {
         let url = URL(string: Router.getExchangeRatesForTable(tableName))!
         getArrayOfData(url: url, completion: completion)
@@ -71,5 +67,11 @@ class NetworkManager {
     func getRatesForDates(tableName: String, selectedCurrency: String, startDate: String, endDate: String, completion: @escaping ((Currency?, ERError?) -> Void)) {
         let url = URL(string: Router.getExchangeRatesForDates(startDate: startDate, endDate: endDate, tableName: tableName, selectedCurrency: selectedCurrency))!
         getObject(url: url, completion: completion)
+    }
+    
+    func parseJsonError(error: Error) -> ErrorInfo {
+        var errorInfo = ErrorInfo()
+        errorInfo.message = "Error during JSON serialization: \(error.localizedDescription)"
+        return errorInfo
     }
 }
