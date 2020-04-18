@@ -35,8 +35,6 @@
 		AF4A323D244A3D0700505803 /* CurrencyDetailsViewElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A323C244A3D0700505803 /* CurrencyDetailsViewElements.swift */; };
 		AF4A323F244A404900505803 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A323E244A404900505803 /* Colors.swift */; };
 		AF4A3241244A40E600505803 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A3240244A40E600505803 /* Fonts.swift */; };
-		AF4A3245244A42D200505803 /* Raleway-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF4A3243244A41CE00505803 /* Raleway-Regular.ttf */; };
-		AF4A3246244A42D200505803 /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF4A3244244A41CE00505803 /* Raleway-SemiBold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,8 +68,6 @@
 		AF4A323C244A3D0700505803 /* CurrencyDetailsViewElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsViewElements.swift; sourceTree = "<group>"; };
 		AF4A323E244A404900505803 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		AF4A3240244A40E600505803 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
-		AF4A3243244A41CE00505803 /* Raleway-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Regular.ttf"; sourceTree = "<group>"; };
-		AF4A3244244A41CE00505803 /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +103,6 @@
 				AF4A31FE2448E9F200505803 /* Data */,
 				AF4A32032448EA3600505803 /* UI */,
 				AF4A32132449A3B200505803 /* Utils */,
-				AF4A3242244A418600505803 /* Resources */,
 				AF4A31EA24487E0B00505803 /* AppDelegate.swift */,
 				AF4A31EE24487E0B00505803 /* ViewController.swift */,
 				AF4A31F024487E0B00505803 /* Main.storyboard */,
@@ -266,15 +261,6 @@
 			path = Cache;
 			sourceTree = "<group>";
 		};
-		AF4A3242244A418600505803 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				AF4A3243244A41CE00505803 /* Raleway-Regular.ttf */,
-				AF4A3244244A41CE00505803 /* Raleway-SemiBold.ttf */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -333,8 +319,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF4A3245244A42D200505803 /* Raleway-Regular.ttf in Resources */,
-				AF4A3246244A42D200505803 /* Raleway-SemiBold.ttf in Resources */,
 				AF4A31F724487E0D00505803 /* LaunchScreen.storyboard in Resources */,
 				AF4A31F424487E0D00505803 /* Assets.xcassets in Resources */,
 				AF4A31F224487E0B00505803 /* Main.storyboard in Resources */,

@@ -9,11 +9,11 @@
 import UIKit
 
 class Fonts {
-    static let navigationTitle = UIFont(name: "Raleway-Regular", size: 17)
-    static let titleBold = UIFont(name: "Raleway-SemiBold", size: 16)
-    static let title = UIFont(name: "Raleway-Regular", size: 16)
-    static let subtitle = UIFont(name: "Raleway-Regular", size: 12)
-    static let bigTitleBold = UIFont(name: "Raleway-SemiBold", size: 20)
-    static let subtitleBold = UIFont(name: "Raleway-SemiBold", size: 14)
-    static let bodyRegular = UIFont(name: "Raleway-Regular", size: 14)
+    static let navigationTitle = UIFont.systemFont(ofSize: 17)
+    static let titleBold = UIFont.boldSystemFont(ofSize: 16)
+    static let title = UIFont.systemFont(ofSize: 16)
+    static let subtitle = UIFont.systemFont(ofSize: 12)
+    static let bigTitleBold = UIFont.boldSystemFont(ofSize: 20)
+    static let subtitleBold = UIFont.boldSystemFont(ofSize: 14)
+    static let bodyRegular = UIFont.systemFont(ofSize: 14)
 }
