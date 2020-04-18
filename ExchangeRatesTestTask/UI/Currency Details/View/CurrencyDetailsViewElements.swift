@@ -12,7 +12,7 @@ class CurrencyDetailsViewElements {
 
     static func createDateTextField() -> UITextField {
         let dateTextField = UITextField()
-        dateTextField.font = Fonts.title
+        dateTextField.font = Fonts.titleRegular
         dateTextField.borderStyle = UITextField.BorderStyle.roundedRect
         dateTextField.autocorrectionType = UITextAutocorrectionType.no
         dateTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
@@ -30,7 +30,7 @@ class CurrencyDetailsViewElements {
     static func createMidTitleLabel() -> UILabel {
         let currencyLabel = UILabel()
         currencyLabel.textColor = Colors.grayTitle
-        currencyLabel.font = Fonts.title
+        currencyLabel.font = Fonts.titleRegular
         currencyLabel.textAlignment = .left
         currencyLabel.numberOfLines = 0
         return currencyLabel
@@ -39,7 +39,7 @@ class CurrencyDetailsViewElements {
     static func createMidValueLabel() -> UILabel {
         let midValueLabel = UILabel()
         midValueLabel.textColor = Colors.grayTitle
-        midValueLabel.font = Fonts.title
+        midValueLabel.font = Fonts.titleRegular
         midValueLabel.textAlignment = .left
         midValueLabel.numberOfLines = 0
         return midValueLabel

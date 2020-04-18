@@ -21,7 +21,7 @@ class CurrencyListViewElements {
     static func createCurrencyLabel() -> UILabel {
         let currencyLabel = UILabel()
         currencyLabel.textColor = Colors.grayTitle
-        currencyLabel.font = Fonts.title
+        currencyLabel.font = Fonts.titleRegular
         currencyLabel.textAlignment = .left
         currencyLabel.numberOfLines = 0
         return currencyLabel
@@ -30,7 +30,7 @@ class CurrencyListViewElements {
     static func createCodeLabel() -> UILabel {
         let codeLabel = UILabel()
         codeLabel.textColor = Colors.grayTitle
-        codeLabel.font = Fonts.title
+        codeLabel.font = Fonts.titleRegular
         codeLabel.textAlignment = .left
         codeLabel.numberOfLines = 0
         return codeLabel
@@ -39,7 +39,7 @@ class CurrencyListViewElements {
     static func createMidValueLabel() -> UILabel {
         let midValueLabel = UILabel()
         midValueLabel.textColor = Colors.grayTitle
-        midValueLabel.font = Fonts.title
+        midValueLabel.font = Fonts.titleRegular
         midValueLabel.textAlignment = .left
         midValueLabel.numberOfLines = 0
         return midValueLabel
