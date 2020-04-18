@@ -24,14 +24,15 @@ class CurrencyDetailsVC: UIViewController {
         view.backgroundColor = .white
         customizeNavigationBar(true)
 //        currencyDetailsPresenter.viewIsPrepared()
-        
-        configureDatePicker()
+        configureStartDatePicker()
+        configureEndDatePicker()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureDateTextFields()
         configureMidValueLabel()
+        currencyDetailsPresenter.viewDelegate = self
     }
     
     func customizeNavigationBar(_ animated: Bool) {
@@ -59,39 +60,62 @@ class CurrencyDetailsVC: UIViewController {
         datesStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leftAnchor, bottom: nil, trailing: view.rightAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 0, enableInsets: false)
     }
     
-    func configureDatePicker() {
-        startDateTextField.inputView = startDatePicker
-        endDateTextField.inputView = endDatePicker
-        startDatePicker.datePickerMode = .date
-        endDatePicker.datePickerMode = .date
-        
+    func configureToolBar(doneButtonAction: Selector?) -> UIToolbar {
         let toolBar = UIToolbar()
         toolBar.sizeToFit()
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: doneButtonAction)
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolBar.setItems([flexSpace, doneButton], animated: true)
-        startDateTextField.inputAccessoryView = toolBar
-        endDateTextField.inputAccessoryView = toolBar
-        
-        startDatePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
-        endDatePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
-
+        return toolBar
     }
     
-    @objc func doneAction() {
+    func configureStartDatePicker() {
+        startDateTextField.inputView = startDatePicker
+        startDatePicker.datePickerMode = .date
+        startDateTextField.inputAccessoryView = configureToolBar(doneButtonAction: #selector(startDateChanged))
+    }
+    
+    func configureEndDatePicker() {
+        endDateTextField.inputView = endDatePicker
+        endDatePicker.datePickerMode = .date
+        endDateTextField.inputAccessoryView = configureToolBar(doneButtonAction: #selector(endDateChanged))
+    }
+    
+    @objc func startDateChanged() {
         view.endEditing(true)
+        currencyDetailsPresenter.startDateSelected(startDatePicker.date)
     }
     
-    @objc func dateChanged() {
-        getDateFromPicker()
+    @objc func endDateChanged() {
+        view.endEditing(true)
+        currencyDetailsPresenter.endDateSelected(endDatePicker.date)
+    }
+
+}
+
+// MARK: CurrencyDetailsViewDelegate
+extension CurrencyDetailsVC: CurrencyDetailsViewDelegate {
+    func showCurrencyDetails(_ data: CurrencyDetailsModel) {
+        
     }
     
-    func getDateFromPicker() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        startDateTextField.text = formatter.string(from: startDatePicker.date)
-        endDateTextField.text = formatter.string(from: endDatePicker.date)
-
+    func showCurrencyDetailsError() {
+        
     }
-
+    
+    func setStartDate(_ date: String) {
+        startDateTextField.text = date
+    }
+    
+    func setEndDate(_ date: String) {
+        endDateTextField.text = date
+    }
+    
+    func showProgress() {
+        
+    }
+    
+    func hideProgress() {
+        
+    }
 }

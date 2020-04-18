@@ -11,60 +11,52 @@ import Foundation
 protocol CurrencyDetailsViewDelegate: class {
     func showCurrencyDetails(_ data: CurrencyDetailsModel)
     func showCurrencyDetailsError()
+    func setStartDate(_ date: String)
+    func setEndDate(_ date: String)
     func showProgress()
     func hideProgress()
 }
 
 class CurrencyDetailsPresenter {
     let selectedCurrencyRate = Cache.shared.getSelectedCurrencyRate()
-//    var currencyDetails = [CurrencyDetailsModel]()
-//    weak var viewDelegate: CurrencyDetailsViewDelegate?
+    var currencyDetails = [CurrencyDetailsModel]()
+    var startDate: String?
+    var endDate: String?
+    
+    var formatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }
+    weak var viewDelegate: CurrencyDetailsViewDelegate?
 //
 //    func viewIsPrepared() {
-//        let selectedUser = Cache.shared.getSelectedCurrencyRate()
-//
-//        if let user = selectedUser {
-//            let profileData = ProfileDetailsItemViewModel(name: user.name, email: user.email, phone: user.phone, image: userImage, address: prepareAdrressToDisplay(user.address), company: prepareCompanyAddressToDisplay(user.company), site: user.website)
-//            viewDelegate?.showProfileDetails(profileData)
-//
+//        if let currencyRate = selectedCurrencyRate {
 //            viewDelegate?.showProgress()
-//            NetworkManager.shared.getPostsForUser(userId: user.id) { [weak self] (posts, error) in
+//
+//            NetworkManager.shared.getRatesForDates(tableName: "C", startDate: "", endDate: "") { [weak self] (currency, error) in
 //                guard let self = self else { return }
+//
 //                self.viewDelegate?.hideProgress()
 //
-//                if let posts = posts {
+//                if let currency = currency {
 //
-//                    for post in posts {
-//                        let post = PostViewModel(postTitle: post.title, postBody: post.body, postImage: self.getRandomImage())
-//                        self.postsList.append(post)
+//                    for rate in currency.rates {
+//                        let currency = CurrencyDetailsModel(startDate: startDate, endDate: endDate, currency: )
+//                        self.currencyDetails.append(currency)
 //                    }
-//                    self.viewDelegate?.showPosts(self.postsList)
+//
 //                } else {
 //                    if let error = error {
-//                        self.viewDelegate?.showDownloadPostsDataError(withMessage: DisplayError.posts.displayMessage(rtError: error))
+//                        self.viewDelegate?.showDownloadCurrencyListDataError(withMessage: DisplayError.currencyList.displayMessage(erError: error))
 //                    }
 //                }
 //            }
-//
 //        } else {
-//            viewDelegate?.showProfileDetailsError()
+//            viewDelegate?.showCurrencyDetailsError()
 //        }
 //    }
-//
-//    private func prepareAdrressToDisplay(_ address: Address) -> String {
-//        return "\(address.street), \(address.zipcode) \(address.city)"
-//    }
-//
-//    private func prepareCompanyAddressToDisplay(_ company: Company) -> String {
-//        return "\(company.name), \(company.catchPhrase), \(company.bs)"
-//    }
-//
-//    private func getRandomImage() -> String {
-//        let hardcodedImages = ["postImage.png", "postImage-1.png", "postImage-2.png"]
-//        let imageIndex = Int(arc4random_uniform(UInt32(hardcodedImages.count)))
-//        let selectedImage = hardcodedImages[imageIndex]
-//        return selectedImage
-//    }
+
     func setMidValue() -> String {
         return getMidValue(selectedCurrencyRate)
     }
@@ -80,6 +72,17 @@ class CurrencyDetailsPresenter {
             midValue = "No value"
         }
         return midValue
+    }
+    
+    func startDateSelected(_ date: Date) {
+        startDate = formatter.string(from: date)
+        viewDelegate?.setStartDate(startDate!)
+        // call backend
+    }
+    
+    func endDateSelected(_ date: Date) {
+        endDate = formatter.string(from: date)
+        viewDelegate?.setEndDate(endDate!)
     }
     
 }
