@@ -1,0 +1,6 @@
+module Pods_ExchangeRatesTestTask {
+  umbrella header "Pods-ExchangeRatesTestTask-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -15,7 +15,6 @@ class CurrencyDetailsViewElements {
         dateTextField.font = UIFont.systemFont(ofSize: 15)
         dateTextField.borderStyle = UITextField.BorderStyle.roundedRect
         dateTextField.autocorrectionType = UITextAutocorrectionType.no
-        dateTextField.clearButtonMode = UITextField.ViewMode.whileEditing
         dateTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
         return dateTextField
     }

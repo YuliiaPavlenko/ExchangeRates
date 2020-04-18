@@ -14,7 +14,7 @@ protocol CurrencyDetailsViewDelegate: class {
     func showDownloadCurrencyDetailsError(withMessage: DisplayErrorModel)
     func setStartDate(_ date: String)
     func setEndDate(_ date: String)
-//    func showProgress()
+    func showProgress()
     func hideProgress()
     func selectInvalidDate()
 }
@@ -39,6 +39,7 @@ class CurrencyDetailsPresenter {
         viewDelegate?.setEndDate(endDate!)
         
         if selectedCurrencyRate != nil {
+            viewDelegate?.showProgress()
             getCurrencyHistory()
         } else {
             viewDelegate?.showCurrencyDetailsError()

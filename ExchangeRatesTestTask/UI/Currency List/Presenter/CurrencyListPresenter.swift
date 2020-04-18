@@ -12,7 +12,7 @@ protocol CurrencyListViewDelegate: class {
     func showCurrencyData(_ data: [CurrencyListModel])
     func showDownloadCurrencyListDataError(withMessage: DisplayErrorModel)
     func showCurrencyDetails()
-//    func showProgress()
+    func showProgress()
     func hideProgress()
 }
 
@@ -30,12 +30,11 @@ class CurrencyListPresenter {
     }
     
     func viewIsPrepared() {
-//        viewDelegate?.showProgress()
+        viewDelegate?.showProgress()
         getCurrencyList()
     }
     
     func onRefreshSwiped() {
-//        viewDelegate?.showProgress()
         getCurrencyList()
     }
     

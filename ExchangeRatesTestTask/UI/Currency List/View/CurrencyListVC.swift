@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class CurrencyListVC: UIViewController {
 
@@ -126,14 +127,15 @@ extension CurrencyListVC: CurrencyListViewDelegate {
         let currencyDetailsVC = CurrencyDetailsVC()
         navigationController?.pushViewController(currencyDetailsVC, animated: false)
     }
-//
-//    func showProgress() {
-//        
-//    }
+
+    func showProgress() {
+        HUD.show(.progress)
+    }
 
     func hideProgress() {
         DispatchQueue.main.async {
             self.refreshControl.endRefreshing()
+            HUD.hide()
         }
     }
 }

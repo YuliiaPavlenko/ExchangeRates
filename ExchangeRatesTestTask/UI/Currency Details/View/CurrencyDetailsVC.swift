@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class CurrencyDetailsVC: UIViewController {
     
@@ -163,13 +164,14 @@ extension CurrencyDetailsVC: CurrencyDetailsViewDelegate {
         endDateTextField.text = date
     }
     
-//    func showProgress() {
-//        
-//    }
+    func showProgress() {
+        HUD.show(.progress)
+    }
     
     func hideProgress() {
         DispatchQueue.main.async {
             self.refreshControl.endRefreshing()
+            HUD.hide()
         }
     }
     

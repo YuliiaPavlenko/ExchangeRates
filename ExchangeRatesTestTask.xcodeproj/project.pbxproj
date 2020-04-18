@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C39DDFC16A60210E59AF757 /* libPods-ExchangeRatesTestTask.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A527500663B0DE1108508518 /* libPods-ExchangeRatesTestTask.a */; };
 		AF4A31EB24487E0B00505803 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A31EA24487E0B00505803 /* AppDelegate.swift */; };
 		AF4A31F224487E0B00505803 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF4A31F024487E0B00505803 /* Main.storyboard */; };
 		AF4A31F424487E0D00505803 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF4A31F324487E0D00505803 /* Assets.xcassets */; };
@@ -39,6 +40,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		036FB753249862913640E77F /* Pods-ExchangeRatesTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangeRatesTestTask.debug.xcconfig"; path = "Target Support Files/Pods-ExchangeRatesTestTask/Pods-ExchangeRatesTestTask.debug.xcconfig"; sourceTree = "<group>"; };
+		95F212F338D8E5E8C7796B86 /* Pods-ExchangeRatesTestTask.qa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangeRatesTestTask.qa.xcconfig"; path = "Target Support Files/Pods-ExchangeRatesTestTask/Pods-ExchangeRatesTestTask.qa.xcconfig"; sourceTree = "<group>"; };
+		A527500663B0DE1108508518 /* libPods-ExchangeRatesTestTask.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExchangeRatesTestTask.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF4A31E724487E0B00505803 /* ExchangeRatesTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeRatesTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF4A31EA24487E0B00505803 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF4A31F124487E0B00505803 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -70,6 +74,7 @@
 		AF4A3240244A40E600505803 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		AF4A3247244B394600505803 /* CurrencyDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsCell.swift; sourceTree = "<group>"; };
 		AF4A324F244B78D200505803 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		BAD895112143BCDADF84DB25 /* Pods-ExchangeRatesTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangeRatesTestTask.release.xcconfig"; path = "Target Support Files/Pods-ExchangeRatesTestTask/Pods-ExchangeRatesTestTask.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,17 +82,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C39DDFC16A60210E59AF757 /* libPods-ExchangeRatesTestTask.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82FCB461F387BD14E56F002B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A527500663B0DE1108508518 /* libPods-ExchangeRatesTestTask.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8B06B064EBB8D57071CA7A32 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				036FB753249862913640E77F /* Pods-ExchangeRatesTestTask.debug.xcconfig */,
+				BAD895112143BCDADF84DB25 /* Pods-ExchangeRatesTestTask.release.xcconfig */,
+				95F212F338D8E5E8C7796B86 /* Pods-ExchangeRatesTestTask.qa.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		AF4A31DE24487E0B00505803 = {
 			isa = PBXGroup;
 			children = (
 				AF4A31E924487E0B00505803 /* ExchangeRatesTestTask */,
 				AF4A31E824487E0B00505803 /* Products */,
+				8B06B064EBB8D57071CA7A32 /* Pods */,
+				82FCB461F387BD14E56F002B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -271,9 +298,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AF4A31FB24487E0D00505803 /* Build configuration list for PBXNativeTarget "ExchangeRatesTestTask" */;
 			buildPhases = (
+				E2B2CB8113ED3A7E81206A7F /* [CP] Check Pods Manifest.lock */,
 				AF4A31E324487E0B00505803 /* Sources */,
 				AF4A31E424487E0B00505803 /* Frameworks */,
 				AF4A31E524487E0B00505803 /* Resources */,
+				54FBB72A71344B77C463F874 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -329,6 +358,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		54FBB72A71344B77C463F874 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExchangeRatesTestTask/Pods-ExchangeRatesTestTask-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ExchangeRatesTestTask/Pods-ExchangeRatesTestTask-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ExchangeRatesTestTask/Pods-ExchangeRatesTestTask-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E2B2CB8113ED3A7E81206A7F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ExchangeRatesTestTask-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AF4A31E324487E0B00505803 /* Sources */ = {
@@ -502,6 +573,7 @@
 		};
 		AF4A31FC24487E0D00505803 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 036FB753249862913640E77F /* Pods-ExchangeRatesTestTask.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -521,6 +593,7 @@
 		};
 		AF4A31FD24487E0D00505803 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAD895112143BCDADF84DB25 /* Pods-ExchangeRatesTestTask.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -594,6 +667,7 @@
 		};
 		AF4A323B244A2E4100505803 /* QA */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95F212F338D8E5E8C7796B86 /* Pods-ExchangeRatesTestTask.qa.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
