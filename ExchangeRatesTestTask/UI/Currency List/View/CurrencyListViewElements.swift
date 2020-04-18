@@ -52,14 +52,4 @@ class CurrencyListViewElements {
         stackView.spacing = 8
         return stackView
     }
-    
-    static func createSegmentControlIem() -> UILabel {
-        let midValueLabel = UILabel()
-        midValueLabel.textColor = .white
-        midValueLabel.text = "A"
-        midValueLabel.font = Fonts.title
-        midValueLabel.textAlignment = .left
-        midValueLabel.numberOfLines = 1
-        return midValueLabel
-    }
 }

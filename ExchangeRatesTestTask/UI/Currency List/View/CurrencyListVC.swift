@@ -48,7 +48,9 @@ class CurrencyListVC: UIViewController {
     func configureView() {
         view.backgroundColor = .white
         
-        let codeSegmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 50, width: self.view.frame.width, height: 50), buttonTitle: tablesForCurrencies)
+        let customSegments = tablesForCurrencies.map() { Segment(title: $0, backgroundColor: Colors.lightGrayBackground) }
+        
+        let codeSegmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 50, width: self.view.frame.width, height: 50), segments: customSegments)
         codeSegmented.delegate = self
         codeSegmented.backgroundColor = .clear
         view.addSubview(codeSegmented)
@@ -57,6 +59,8 @@ class CurrencyListVC: UIViewController {
         
         tableView.anchor(top: codeSegmented.bottomAnchor, leading: view.leftAnchor, bottom: view.bottomAnchor, trailing: view.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
     }
+    
+    
 
     func setupTableView() {
         view.addSubview(tableView)

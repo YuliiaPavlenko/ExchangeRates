@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -37,6 +37,7 @@
 		AF4A3241244A40E600505803 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A3240244A40E600505803 /* Fonts.swift */; };
 		AF4A3248244B394600505803 /* CurrencyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A3247244B394600505803 /* CurrencyDetailsCell.swift */; };
 		AF4A3250244B78D300505803 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A324F244B78D200505803 /* CustomSegmentedControl.swift */; };
+		AF4A3252244B866200505803 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A3251244B866200505803 /* Segment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		AF4A3240244A40E600505803 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		AF4A3247244B394600505803 /* CurrencyDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsCell.swift; sourceTree = "<group>"; };
 		AF4A324F244B78D200505803 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		AF4A3251244B866200505803 /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
 		BAD895112143BCDADF84DB25 /* Pods-ExchangeRatesTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangeRatesTestTask.release.xcconfig"; path = "Target Support Files/Pods-ExchangeRatesTestTask/Pods-ExchangeRatesTestTask.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,7 +106,6 @@
 				BAD895112143BCDADF84DB25 /* Pods-ExchangeRatesTestTask.release.xcconfig */,
 				95F212F338D8E5E8C7796B86 /* Pods-ExchangeRatesTestTask.qa.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -237,6 +238,7 @@
 				AF4A32162449A58400505803 /* CurrencyListCell.swift */,
 				AF4A32182449A5A700505803 /* CurrencyListViewElements.swift */,
 				AF4A324F244B78D200505803 /* CustomSegmentedControl.swift */,
+				AF4A3251244B866200505803 /* Segment.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -407,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF4A3232244A1D6A00505803 /* CurrencyDetailsVC.swift in Sources */,
+				AF4A3252244B866200505803 /* Segment.swift in Sources */,
 				AF4A323F244A404900505803 /* Colors.swift in Sources */,
 				AF4A321B2449E66500505803 /* Currency.swift in Sources */,
 				AF4A3248244B394600505803 /* CurrencyDetailsCell.swift in Sources */,

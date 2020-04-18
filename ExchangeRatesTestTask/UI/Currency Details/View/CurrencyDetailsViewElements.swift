@@ -12,7 +12,7 @@ class CurrencyDetailsViewElements {
 
     static func createDateTextField() -> UITextField {
         let dateTextField = UITextField()
-        dateTextField.font = UIFont.systemFont(ofSize: 15)
+        dateTextField.font = Fonts.title
         dateTextField.borderStyle = UITextField.BorderStyle.roundedRect
         dateTextField.autocorrectionType = UITextAutocorrectionType.no
         dateTextField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
