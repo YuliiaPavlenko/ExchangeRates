@@ -17,4 +17,13 @@ class CustomErrorAlert {
         }))
         return alert
     }
+    
+    static func errorDatesAlert() -> UIAlertController {
+        let errorTitle = "Selection data error"
+        let errorMessage = "Please, make sure that start date is less that end date"
+        let alert = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_: UIAlertAction!) in
+        }))
+        return alert
+    }
 }

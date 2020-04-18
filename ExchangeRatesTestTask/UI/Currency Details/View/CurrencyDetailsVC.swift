@@ -157,13 +157,18 @@ extension CurrencyDetailsVC: CurrencyDetailsViewDelegate {
         endDateTextField.text = date
     }
     
-    func showProgress() {
-        
-    }
+//    func showProgress() {
+//        
+//    }
     
     func hideProgress() {
         DispatchQueue.main.async {
             self.refreshControl.endRefreshing()
         }
+    }
+    
+    func selectInvalidDate() {
+        let alert = CustomErrorAlert.errorDatesAlert()
+        present(alert, animated: true)
     }
 }

@@ -14,8 +14,9 @@ protocol CurrencyDetailsViewDelegate: class {
     func showDownloadCurrencyDetailsError(withMessage: DisplayErrorModel)
     func setStartDate(_ date: String)
     func setEndDate(_ date: String)
-    func showProgress()
+//    func showProgress()
     func hideProgress()
+    func selectInvalidDate()
 }
 
 class CurrencyDetailsPresenter {
@@ -37,11 +38,7 @@ class CurrencyDetailsPresenter {
         viewDelegate?.setStartDate(startDate!)
         viewDelegate?.setEndDate(endDate!)
         
-        currencyDetailsList = []
-        
         if selectedCurrencyRate != nil {
-            viewDelegate?.showProgress()
-            
             getCurrencyHistory()
         } else {
             viewDelegate?.showCurrencyDetailsError()
@@ -49,12 +46,13 @@ class CurrencyDetailsPresenter {
     }
     
     func onRefreshSwiped() {
-        currencyDetailsList = []
         getCurrencyHistory()
     }
     
     fileprivate func getCurrencyHistory() {
         let tableName = Cache.shared.getSelectedCurrencyTable()!
+        
+        currencyDetailsList = []
         
         NetworkManager.shared.getRatesForDates(tableName: tableName, selectedCurrency: (selectedCurrencyRate?.code)!, startDate: startDate!, endDate: endDate!) { [weak self] (currency, error) in
             guard let self = self else { return }
@@ -82,10 +80,6 @@ class CurrencyDetailsPresenter {
         startDate = formatter.string(from: currentDate.dayBefore)
     }
     
-//    func validateDates() {
-//        if startDate > 
-//    }
-    
     func getMidValue(_ rate: Rate?) -> String {
         let midValue: String
         if let mid = rate?.mid {
@@ -100,10 +94,10 @@ class CurrencyDetailsPresenter {
     }
     
     func startDateSelected(_ date: Date) {
-//        if date > endDate {
-//            viewDelegate?.
-//            return
-//        }
+        if date > formatter.date(from: endDate!)!  {
+            viewDelegate?.selectInvalidDate()
+            return
+        }
         
         startDate = formatter.string(from: date)
         viewDelegate?.setStartDate(startDate!)
@@ -112,6 +106,11 @@ class CurrencyDetailsPresenter {
     }
     
     func endDateSelected(_ date: Date) {
+        if date < formatter.date(from: startDate!)!  {
+            viewDelegate?.selectInvalidDate()
+            return
+        }
+        
         endDate = formatter.string(from: date)
         viewDelegate?.setEndDate(endDate!)
         
