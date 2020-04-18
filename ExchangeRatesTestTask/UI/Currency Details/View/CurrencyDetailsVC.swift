@@ -88,12 +88,14 @@ class CurrencyDetailsVC: UIViewController {
     func configureStartDatePicker() {
         startDateTextField.inputView = startDatePicker
         startDatePicker.datePickerMode = .date
+        startDatePicker.maximumDate = currencyDetailsPresenter.setMaximumDate()
         startDateTextField.inputAccessoryView = configureToolBar(doneButtonAction: #selector(startDateChanged))
     }
     
     func configureEndDatePicker() {
         endDateTextField.inputView = endDatePicker
         endDatePicker.datePickerMode = .date
+        endDatePicker.maximumDate = currencyDetailsPresenter.setMaximumDate()
         endDateTextField.inputAccessoryView = configureToolBar(doneButtonAction: #selector(endDateChanged))
     }
     

@@ -118,4 +118,9 @@ class CurrencyDetailsPresenter {
         
         getCurrencyHistory()
     }
+    
+    func setMaximumDate() -> Date{
+        let now = Date()
+        return now
+    }
 }
