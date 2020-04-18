@@ -38,6 +38,7 @@
 		AF4A3248244B394600505803 /* CurrencyDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A3247244B394600505803 /* CurrencyDetailsCell.swift */; };
 		AF4A3250244B78D300505803 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A324F244B78D200505803 /* CustomSegmentedControl.swift */; };
 		AF4A3252244B866200505803 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A3251244B866200505803 /* Segment.swift */; };
+		AF4A3254244B8F2E00505803 /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF4A3253244B8F2E00505803 /* Date+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		AF4A3247244B394600505803 /* CurrencyDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDetailsCell.swift; sourceTree = "<group>"; };
 		AF4A324F244B78D200505803 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		AF4A3251244B866200505803 /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
+		AF4A3253244B8F2E00505803 /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
 		BAD895112143BCDADF84DB25 /* Pods-ExchangeRatesTestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExchangeRatesTestTask.release.xcconfig"; path = "Target Support Files/Pods-ExchangeRatesTestTask/Pods-ExchangeRatesTestTask.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				AF4A32142449A3CF00505803 /* UIView+Utils.swift */,
+				AF4A3253244B8F2E00505803 /* Date+Utils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				AF4A323F244A404900505803 /* Colors.swift in Sources */,
 				AF4A321B2449E66500505803 /* Currency.swift in Sources */,
 				AF4A3248244B394600505803 /* CurrencyDetailsCell.swift in Sources */,
+				AF4A3254244B8F2E00505803 /* Date+Utils.swift in Sources */,
 				AF4A3230244A1D5D00505803 /* CurrencyDetailsModel.swift in Sources */,
 				AF4A32192449A5A700505803 /* CurrencyListViewElements.swift in Sources */,
 				AF4A323D244A3D0700505803 /* CurrencyDetailsViewElements.swift in Sources */,
