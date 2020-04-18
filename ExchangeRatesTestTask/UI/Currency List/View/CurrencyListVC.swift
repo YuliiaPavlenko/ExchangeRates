@@ -20,6 +20,17 @@ class CurrencyListVC: UIViewController {
     let tablesForCurrencies = ["A","B","C"]
     
     // MARK: - View Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        currencyListPresenter.viewDelegate = self
+        
+        configureView()
+        setupTableView()
+    
+        currencyListPresenter.viewIsPrepared()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         customizeNavigationBar(animated)
@@ -28,15 +39,6 @@ class CurrencyListVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        currencyListPresenter.viewDelegate = self
-        setupTableView()
-    
-        currencyListPresenter.viewIsPrepared()
     }
     
     // MARK: - Custom Functions
@@ -52,20 +54,17 @@ class CurrencyListVC: UIViewController {
         
         let codeSegmented = CustomSegmentedControl(frame: CGRect(x: 0, y: 50, width: self.view.frame.width, height: 50), segments: customSegments)
         codeSegmented.delegate = self
-        codeSegmented.backgroundColor = .clear
+        
         view.addSubview(codeSegmented)
         
         codeSegmented.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leftAnchor, bottom: nil, trailing: view.rightAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 30, enableInsets: false)
         
+        view.addSubview(tableView)
+        
         tableView.anchor(top: codeSegmented.bottomAnchor, leading: view.leftAnchor, bottom: view.bottomAnchor, trailing: view.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
     }
     
-    
-
     func setupTableView() {
-        view.addSubview(tableView)
-        configureView()
-
         tableView.delegate = self
         tableView.dataSource = self
         tableView.layoutMargins = UIEdgeInsets.zero

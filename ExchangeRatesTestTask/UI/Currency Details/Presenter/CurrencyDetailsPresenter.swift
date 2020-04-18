@@ -86,8 +86,7 @@ class CurrencyDetailsPresenter {
         let midValue: String
         if let mid = rate?.mid {
             midValue = String(mid)
-        } else if let ask = rate?.ask,
-            let bid = rate?.bid {
+        } else if let ask = rate?.ask, let bid = rate?.bid {
             midValue = String((ask + bid) / 2)
         } else {
             midValue = "No value"
@@ -96,7 +95,7 @@ class CurrencyDetailsPresenter {
     }
     
     func startDateSelected(_ date: Date) {
-        if date > formatter.date(from: endDate!)!  {
+        if date > formatter.date(from: endDate!)! { 
             viewDelegate?.selectInvalidDate()
             return
         }
@@ -108,7 +107,7 @@ class CurrencyDetailsPresenter {
     }
     
     func endDateSelected(_ date: Date) {
-        if date < formatter.date(from: startDate!)!  {
+        if date < formatter.date(from: startDate!)! {
             viewDelegate?.selectInvalidDate()
             return
         }
@@ -119,7 +118,7 @@ class CurrencyDetailsPresenter {
         getCurrencyHistory()
     }
     
-    func setMaximumDate() -> Date{
+    func setMaximumDate() -> Date {
         let now = Date()
         return now
     }

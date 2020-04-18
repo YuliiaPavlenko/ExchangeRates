@@ -10,6 +10,5 @@ import Foundation
 
 struct CurrencyDetailsModel {
     var date: String?
-//    var currency: String?
     var midValue: String?
 }

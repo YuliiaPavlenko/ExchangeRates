@@ -22,21 +22,22 @@ class CurrencyDetailsVC: UIViewController {
     var currencyDetailsPresenter = CurrencyDetailsPresenter()
     
     // MARK: - View Lifecycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        view.backgroundColor = .white
-        customizeNavigationBar(true)
-        currencyDetailsPresenter.viewIsPrepared()
-        configureStartDatePicker()
-        configureEndDatePicker()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureDateTextFields()
-        currencyDetailsPresenter.viewDelegate = self
+        
+        configureView()
         setupTableView()
         configureRefreshControl()
+        configureStartDatePicker()
+        configureEndDatePicker()
+        
+        currencyDetailsPresenter.viewDelegate = self
+        currencyDetailsPresenter.viewIsPrepared()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        customizeNavigationBar(true)
     }
     
     // MARK: - Custom Functions
@@ -63,17 +64,21 @@ class CurrencyDetailsVC: UIViewController {
         currencyDetailsPresenter.onRefreshSwiped()
     }
 
-    func configureDateTextFields() {
+    func configureView() {
+        view.backgroundColor = .white
+
         startDateTextField.placeholder = "Enter start date"
         endDateTextField.placeholder = "Enter end date"
         
         let datesStackView = CurrencyDetailsViewElements.createHorizontalStackView(arrangedSubviews: [startDateTextField, endDateTextField])
+        
         view.addSubview(datesStackView)
-        view.addSubview(tableView)
         
         datesStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leftAnchor, bottom: nil, trailing: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 0, enableInsets: false)
         
-        tableView.anchor(top: datesStackView.bottomAnchor, leading: view.leftAnchor, bottom: view.bottomAnchor, trailing: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
+        view.addSubview(tableView)
+        
+        tableView.anchor(top: datesStackView.bottomAnchor, leading: view.leftAnchor, bottom: view.bottomAnchor, trailing: view.rightAnchor, paddingTop: 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
     }
     
     func configureToolBar(doneButtonAction: Selector?) -> UIToolbar {
@@ -155,7 +160,6 @@ extension CurrencyDetailsVC: CurrencyDetailsViewDelegate {
             self.present(alert, animated: true)
         }
     }
-    
     
     func setStartDate(_ date: String) {
         startDateTextField.text = date
