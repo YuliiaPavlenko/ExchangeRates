@@ -71,13 +71,13 @@ class CurrencyDetailsVC: UIViewController {
         view.addSubview(datesStackView)
         view.addSubview(tableView)
         
-        datesStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leftAnchor, bottom: nil, trailing: view.rightAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 50, enableInsets: false)
+        datesStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leftAnchor, bottom: nil, trailing: view.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 0, enableInsets: false)
         
         tableView.anchor(top: datesStackView.bottomAnchor, leading: view.leftAnchor, bottom: view.bottomAnchor, trailing: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
     }
     
     func configureToolBar(doneButtonAction: Selector?) -> UIToolbar {
-        let toolBar = UIToolbar()
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
         toolBar.sizeToFit()
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: doneButtonAction)
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -108,7 +108,6 @@ class CurrencyDetailsVC: UIViewController {
         view.endEditing(true)
         currencyDetailsPresenter.endDateSelected(endDatePicker.date)
     }
-
 }
 
 // MARK: - UITableView Delegate & DataSource
