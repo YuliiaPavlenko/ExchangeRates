@@ -12,10 +12,11 @@ class CurrencyListVC: UIViewController {
     
     var currencyList = [CurrencyListModel]()
     var currencyListPresenter = CurrencyListPresenter()
+    var refreshControl = UIRefreshControl()
+
     
 //    lazy var customSegmentedControl = CurrencyListViewElements.createSegmentedControl(withItems: ["Table A", "Table B", "Table C"])
     let tableView = UITableView(frame: .zero, style: .plain)
-    let spinner = UIActivityIndicatorView(style: .whiteLarge)
     let customSegmentA = CurrencyListViewElements.createSegmentControlIem()
     let customSegmentB = CurrencyListViewElements.createSegmentControlIem()
     let customSegmentC = CurrencyListViewElements.createSegmentControlIem()
@@ -35,12 +36,6 @@ class CurrencyListVC: UIViewController {
         super.viewDidLoad()
         currencyListPresenter.viewDelegate = self
         setupTableView()
-        
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(spinner)
-        spinner.tintColor = .red
-        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         currencyListPresenter.viewIsPrepared()
     }
@@ -63,11 +58,18 @@ class CurrencyListVC: UIViewController {
         tableView.layoutMargins = UIEdgeInsets.zero
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.register(CurrencyListCell.self, forCellReuseIdentifier: CurrencyListCell.Identifier)
+        configureRefreshControl()
     }
     
-//    func setupSegmentedControl() {
-//        segmentedControl.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
-//    }
+    func configureRefreshControl() {
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
+    @objc func refresh() {
+        currencyListPresenter.onRefreshSwiped()
+    }
     
     @objc fileprivate func handleSegmentChange() {
         
@@ -123,15 +125,14 @@ extension CurrencyListVC: CurrencyListViewDelegate {
         let currencyDetailsVC = CurrencyDetailsVC()
         navigationController?.pushViewController(currencyDetailsVC, animated: false)
     }
-
-    func showProgress() {
-        spinner.startAnimating()
-    }
+//
+//    func showProgress() {
+//        
+//    }
 
     func hideProgress() {
         DispatchQueue.main.async {
-            self.tableView.refreshControl?.endRefreshing()
-            self.spinner.stopAnimating()
+            self.refreshControl.endRefreshing()
         }
     }
 }

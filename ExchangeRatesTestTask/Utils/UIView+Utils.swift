@@ -42,3 +42,13 @@ extension UIView {
         }
     }
 }
+
+extension Date {
+    var dayBefore: Date {
+        Calendar.current.date(byAdding: .day, value: -1, to: self)!
+    }
+
+    var twoDaysBefore: Date {
+        Calendar.current.date(byAdding: .day, value: -2, to: self)!
+    }
+}

@@ -15,6 +15,7 @@ class CurrencyDetailsVC: UIViewController {
     let startDatePicker = UIDatePicker()
     let endDatePicker = UIDatePicker()
     let tableView = UITableView(frame: .zero, style: .plain)
+    var refreshControl = UIRefreshControl()
 
     var currencyDetailsList = [CurrencyDetailsModel]()
     var currencyDetailsPresenter = CurrencyDetailsPresenter()
@@ -33,17 +34,26 @@ class CurrencyDetailsVC: UIViewController {
         configureDateTextFields()
         currencyDetailsPresenter.viewDelegate = self
         setupTableView()
+        configureRefreshControl()
     }
     
     func setupTableView() {
-//        view.addSubview(tableView)
-
         tableView.delegate = self
         tableView.dataSource = self
         tableView.layoutMargins = UIEdgeInsets.zero
         tableView.separatorInset = UIEdgeInsets.zero
         tableView.register(CurrencyDetailsCell.self, forCellReuseIdentifier: CurrencyDetailsCell.Identifier)
         
+    }
+    
+    func configureRefreshControl() {
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
+    @objc func refresh() {
+        currencyDetailsPresenter.onRefreshSwiped()
     }
     
     func customizeNavigationBar(_ animated: Bool) {
@@ -57,7 +67,9 @@ class CurrencyDetailsVC: UIViewController {
         let datesStackView = CurrencyDetailsViewElements.createHorizontalStackView(arrangedSubviews: [startDateTextField, endDateTextField])
         view.addSubview(datesStackView)
         view.addSubview(tableView)
-        datesStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leftAnchor, bottom: nil, trailing: view.rightAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 0, enableInsets: false)
+        
+        datesStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leftAnchor, bottom: nil, trailing: view.rightAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 50, enableInsets: false)
+        
         tableView.anchor(top: datesStackView.bottomAnchor, leading: view.leftAnchor, bottom: view.bottomAnchor, trailing: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0, enableInsets: false)
     }
     
@@ -150,6 +162,8 @@ extension CurrencyDetailsVC: CurrencyDetailsViewDelegate {
     }
     
     func hideProgress() {
-        
+        DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
+        }
     }
 }

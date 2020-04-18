@@ -21,8 +21,8 @@ protocol CurrencyDetailsViewDelegate: class {
 class CurrencyDetailsPresenter {
     let selectedCurrencyRate = Cache.shared.getSelectedCurrencyRate()
     var currencyDetailsList = [CurrencyDetailsModel]()
-    var startDate: String? = "2012-01-01"
-    var endDate: String? = "2012-01-31"
+    var startDate: String?
+    var endDate: String?
     
     var formatter: DateFormatter {
         let formatter = DateFormatter()
@@ -32,37 +32,59 @@ class CurrencyDetailsPresenter {
     weak var viewDelegate: CurrencyDetailsViewDelegate?
 
     func viewIsPrepared() {
+        initializeDates()
+        
+        viewDelegate?.setStartDate(startDate!)
+        viewDelegate?.setEndDate(endDate!)
+        
+        currencyDetailsList = []
+        
         if selectedCurrencyRate != nil {
             viewDelegate?.showProgress()
             
-            let tableName = Cache.shared.getSelectedCurrencyTable()!
-            
-            NetworkManager.shared.getRatesForDates(tableName: tableName, selectedCurrency: (selectedCurrencyRate?.code)!, startDate: startDate!, endDate: endDate!) { [weak self] (currency, error) in
-                guard let self = self else { return }
-
-                self.viewDelegate?.hideProgress()
-
-                if currency != nil {
-                    for rate in currency!.rates {
-                        let currencyDetails = CurrencyDetailsModel(date: rate.effectiveDate, midValue: self.getMidValue(rate))
-                        self.currencyDetailsList.append(currencyDetails)
-                    }
-                    
-                    self.viewDelegate?.showCurrencyDetails(self.currencyDetailsList)
-                } else {
-                    if let error = error {
-                        self.viewDelegate?.showDownloadCurrencyDetailsError(withMessage: DisplayError.currencyList.displayMessage(erError: error))
-                    }
-                }
-            }
+            getCurrencyHistory()
         } else {
             viewDelegate?.showCurrencyDetailsError()
         }
     }
-
-    func setMidValue() -> String {
-        return getMidValue(selectedCurrencyRate)
+    
+    func onRefreshSwiped() {
+        currencyDetailsList = []
+        getCurrencyHistory()
     }
+    
+    fileprivate func getCurrencyHistory() {
+        let tableName = Cache.shared.getSelectedCurrencyTable()!
+        
+        NetworkManager.shared.getRatesForDates(tableName: tableName, selectedCurrency: (selectedCurrencyRate?.code)!, startDate: startDate!, endDate: endDate!) { [weak self] (currency, error) in
+            guard let self = self else { return }
+            
+            self.viewDelegate?.hideProgress()
+            
+            if currency != nil {
+                for rate in currency!.rates {
+                    let currencyDetails = CurrencyDetailsModel(date: rate.effectiveDate, midValue: self.getMidValue(rate))
+                    self.currencyDetailsList.append(currencyDetails)
+                }
+                
+                self.viewDelegate?.showCurrencyDetails(self.currencyDetailsList)
+            } else {
+                if let error = error {
+                    self.viewDelegate?.showDownloadCurrencyDetailsError(withMessage: DisplayError.currencyList.displayMessage(erError: error))
+                }
+            }
+        }
+    }
+    
+    func initializeDates() {
+        let currentDate = Date()
+        endDate = formatter.string(from: currentDate)
+        startDate = formatter.string(from: currentDate.dayBefore)
+    }
+    
+//    func validateDates() {
+//        if startDate > 
+//    }
     
     func getMidValue(_ rate: Rate?) -> String {
         let midValue: String
@@ -78,13 +100,21 @@ class CurrencyDetailsPresenter {
     }
     
     func startDateSelected(_ date: Date) {
+//        if date > endDate {
+//            viewDelegate?.
+//            return
+//        }
+        
         startDate = formatter.string(from: date)
         viewDelegate?.setStartDate(startDate!)
-        // call backend
+        
+        getCurrencyHistory()
     }
     
     func endDateSelected(_ date: Date) {
         endDate = formatter.string(from: date)
         viewDelegate?.setEndDate(endDate!)
+        
+        getCurrencyHistory()
     }
 }

@@ -12,7 +12,7 @@ protocol CurrencyListViewDelegate: class {
     func showCurrencyData(_ data: [CurrencyListModel])
     func showDownloadCurrencyListDataError(withMessage: DisplayErrorModel)
     func showCurrencyDetails()
-    func showProgress()
+//    func showProgress()
     func hideProgress()
 }
 
@@ -28,23 +28,31 @@ class CurrencyListPresenter {
         Cache.shared.setSelectedCurrencyTable(selectedTable!)
         viewDelegate?.showCurrencyDetails()
     }
-
+    
     func viewIsPrepared() {
-        viewDelegate?.showProgress()
-        
+//        viewDelegate?.showProgress()
+        getCurrencyList()
+    }
+    
+    func onRefreshSwiped() {
+//        viewDelegate?.showProgress()
+        getCurrencyList()
+    }
+    
+    fileprivate func getCurrencyList() {
         NetworkManager.shared.getCurrenciesForTable(tableName: selectedTable!) { [weak self] (currency, error) in
             guard let self = self else { return }
-
+            
             self.viewDelegate?.hideProgress()
-
+            
             if let currency = currency {
                 self.originalCurrencyList = currency.rates
-
+                
                 for rate in currency.rates {
                     let currency = CurrencyListModel(date: currency.effectiveDate, currency: rate.currency, code: rate.code, midValue: self.getMidValue(rate))
                     self.currencyList.append(currency)
                 }
-
+                
                 self.viewDelegate?.showCurrencyData(self.currencyList)
             } else {
                 if let error = error {
